@@ -141,12 +141,40 @@ int main()
 		// if가 거짓이면 여기
 	}
 
+	switch (10)
+	{
+	case 10:
 
-	// 삼항 연산잔
-	// :?
+		break;
+	case 20:
+
+		break;
+	default:
+
+		break;
+	}
+
+	switch (10)
+	{
+	case 10:
+	case 20:
+	case 30:
+		// 의도적으로 break를 한군데만 적어서 10, 20, 30일때 작동하게 만들 수 있다.
+		break;
+	default:
+
+		break;
+	}
+
+
+	// 삼항 연산자
+	// if else 문법을 간략하게 쓰고 싶을때 사용
+	// ?:
+	int iTest = 10;
+	iTest == 20 ? iTest = 100 : iTest = 200;
+
 
 	// 
-	// 아 내자리;;
 
 
 	return 0;
