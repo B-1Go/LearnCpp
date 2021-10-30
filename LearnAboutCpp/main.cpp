@@ -1,8 +1,29 @@
 // C++ 에서 #이라는 구문으로 전처리를 지원한다. 전처리는 말 그대로 먼저 수행한다는 뜻이다.
 // 컴파일러가 작성된 코드를 보기전에 #구문을 먼저 수행하고 코드를 본다.
-#define HUNGRY 1
+#define HUNGRY  1
 // 정의 전처리(매크로)를 활용해서 HUNGRY를 1로 지정
 // 가독성 및 유지보수 이점
+#define THIRSTY 2
+#define TIRED   4
+#define FIRE    8
+#define COLD    16
+#define POISON  32
+
+// 보통은 16진수로 표현을 한다.
+#define six   0x001
+#define six1  0x002
+#define six2  0x004
+#define six3  0x008
+
+#define six4  0x010
+#define six5  0x020
+#define six6  0x040
+#define six7  0x080
+
+#define six8  0x100
+#define six9  0x200
+#define six10 0x400
+#define six11 0x800
 
 
 // 주석
@@ -198,8 +219,27 @@ int main()
 	// 비트연산 게임에서는 전처리로 자줄 쓰인다.
 	// 맨 첫줄에 적음
 
-	int Stats = HUNGRY;
+	unsigned int iStats = HUNGRY;
 	// #define 구문으로 정의를 했기 때문에 Stats에는 HUNGRY 단어처럼 보이지만 1이라는 정수형이 들어온다.
+
+
+	// 비트연산자 활용 방법 (스타에서 유닛 상태를 비트단위로 표현했던거 기억나지? 그거야!)
+	iStats = 0; // int(4)이니까 32bit이고 각 자리를 상태로 활용하면 32개의 상태를 정의할 수 있다.
+	
+	// 상태추가
+	iStats |= HUNGRY;
+	iStats |= THIRSTY;
+
+	// 상태확인
+	if (iStats & THIRSTY)
+	{
+
+	}
+
+	// 특정 자리 비트 제거
+	iStats &= ~THIRSTY;
+
+
 
 	return 0;
 }
