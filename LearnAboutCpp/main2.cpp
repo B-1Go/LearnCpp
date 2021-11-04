@@ -51,6 +51,21 @@ int main()
 
 	// while()
 
+
+	// 콘솔
+	// printf()
+	printf("abcdf %d \n", 10); // %d: 정수형 타입 치환문자
+	printf("abcdf %f \n", 3.14f); // 실수형도 가능 대신 %f로 해줘야됨
+
+	for (int i = 0; i < 10; i++)
+	{
+		printf("Output i : %d \n", i);
+	}
+
+	// scanf()
+	int iInput = 0;
+	scanf_s("%d", &iInput); // scanf_save.ver 이라고 강의해서 말함 나중에 찾아보자
+
 	return 0;
 }
 
