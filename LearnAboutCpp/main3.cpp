@@ -13,7 +13,9 @@ int Factorial(int _iNum)
 	return iValue;
 }
 
-
+// 재귀함수
+// 가독성, 구현의 용이
+// 탈출조건필수, 함수를 변수처럼 사용 & 함수 호출 및 해제 비용 으로 성능저하
 
 
 int main()
