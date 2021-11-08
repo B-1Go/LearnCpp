@@ -23,10 +23,10 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main5.cpp">
+    <ClCompile Include="func.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
-    <ClCompile Include="func.cpp">
+    <ClCompile Include="main6.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
   </ItemGroup>

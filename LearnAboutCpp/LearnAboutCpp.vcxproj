@@ -144,7 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="func.cpp" />
-    <ClCompile Include="main5.cpp" />
+    <ClCompile Include="main6.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="func.h" />

@@ -5,5 +5,6 @@ https://www.youtube.com/playlist?list=PL4SIC1d_ab-aOxWPucn31NHkQvNPHK1D1
 2. main2.cpp : 14悪 - 17悪
 3. main3.cpp : 18悪 - 21悪
 4. main4.cpp : 22悪 - 22悪
-5. main5.cpp : 23悪 - ??悪
-6. func.h, func.cpp : 24悪
+5. main5.cpp : 23悪 - 24悪
+6. func.h, func.cpp : 24悪 - 
+7. main6.cpp : 25悪 - ??
