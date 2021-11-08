@@ -6,3 +6,4 @@ https://www.youtube.com/playlist?list=PL4SIC1d_ab-aOxWPucn31NHkQvNPHK1D1
 3. main3.cpp : 18悪 - 21悪
 4. main4.cpp : 22悪 - 22悪
 5. main5.cpp : 23悪 - ??悪
+6. func.h, func.cpp : 24悪
