@@ -143,7 +143,7 @@
     <Text Include="Tip.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main4.cpp" />
+    <ClCompile Include="main5.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
