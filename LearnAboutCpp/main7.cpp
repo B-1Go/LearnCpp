@@ -63,5 +63,10 @@ int main()
 	int iCall = Test();
 	printf("Test함수 호출 횟수 : %d\n", iCall);
 
+
+
+	// 포인터
+
+
 	return 0;
 }
