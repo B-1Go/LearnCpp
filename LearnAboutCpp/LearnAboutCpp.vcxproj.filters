@@ -26,10 +26,10 @@
     <ClCompile Include="func.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
-    <ClCompile Include="main7.cpp">
+    <ClCompile Include="Test.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Test.cpp">
+    <ClCompile Include="main8.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -8,5 +8,6 @@ https://www.youtube.com/playlist?list=PL4SIC1d_ab-aOxWPucn31NHkQvNPHK1D1
 5. main5.cpp : 23悪 - 24悪
 6. func.h, func.cpp : 24悪 - 
 7. main6.cpp : 25悪 - 25悪
-8. main7.cpp : 26悪 - ??悪
+8. main7.cpp : 26悪 - 28悪
 9. Test.cpp : 26悪 - 26悪
+10. main8.cpp : 29悪 - ??悪
