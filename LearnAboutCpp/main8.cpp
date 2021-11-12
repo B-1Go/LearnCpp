@@ -1,6 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+void Test(int* a)
+{
+	*a = 500;
+}
+
+
 int main()
 {
 	// 포인터 변수
@@ -44,6 +50,40 @@ int main()
 	// int(&iArr2)[10] = iArr; 인트 배열 포인터가 정확한 표현인데 나중에 설명
 
 
+
+	// 포인터 이해 확인 문제
+	// 문제 1.
+	short sArr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	int* pI = (int*)sArr;
+
+	int iData = *((short*)(pI + 2));
+
+	printf("1번 문제 정답 : %d\n", iData); // 5
+
+
+	// 문제 2.
+	char cArr[2] = { 1, 1 };
+	
+	short* pS = (short*)cArr;
+
+	iData = *pS;
+
+	printf("2번 문제 정답 : %d\n", iData); // 257
+
+
+	int a = 100;
+
+	Test(&a);
+
+	printf("출력 : %d\n", a);
+	// Test함수 안에 a = 500; 넣어도 main함수에 a는 바뀌지 않는다. 왜냐면 스택함수에 지역변수는 스택호출되고 사라지면 끝이기 때문이다.
+	// 그러면 스택 메모리에 주소를 받아서 수정하면 되지 않을까?
+	// 그래서 Test 함수로 main함수의 a변수의 주소를 받아서 수정하는 방법이 있다.
+
+	scanf_s("%d", &a);
+	// scanf_s가 왜 &a를 해야되는지 이제 이해할 수 있다.
+	// 입력값의 주소를 넘겨줘서 주소의 데이터를 참조하여 변경하는 것이다.
 
 	return 0;
 }
