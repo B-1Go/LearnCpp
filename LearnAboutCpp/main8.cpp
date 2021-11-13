@@ -85,5 +85,24 @@ int main()
 	// scanf_s가 왜 &a를 해야되는지 이제 이해할 수 있다.
 	// 입력값의 주소를 넘겨줘서 주소의 데이터를 참조하여 변경하는 것이다.
 
+
+
+	// const
+
+	volatile const int cint = 100; // volatile(휘발성) : 레지스터 최적화 하지말고 cint 메모리 주소로 가서 value를 직접확인해라.
+
+	// 상수화
+	// r-value : 상수
+	// l-value : 변수
+	int ii = 10;
+	// =기준으로 왼쪽은 left-value, 오른쪽은 right-value여서 위와 같다.
+
+	pInt = (int*)&cint; // 상수화가 됬다고 못바꾸는건 아니고 C++에서 문법적으로 막아주는 것 뿐이다.
+	*pInt = 300;
+	printf("cint 출력 : %d\n", cint);
+
+
+
+
 	return 0;
 }
