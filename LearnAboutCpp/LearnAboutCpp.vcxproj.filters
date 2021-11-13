@@ -29,7 +29,7 @@
     <ClCompile Include="Test.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
-    <ClCompile Include="main8.cpp">
+    <ClCompile Include="main9.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
   </ItemGroup>
