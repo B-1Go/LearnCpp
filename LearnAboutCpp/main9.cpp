@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void Output(const int* pI)
+void Output(const int* pI) // void 없다라고 해석 할 수 있는데, return 되는 값이 없는 것이다. 만약 int거나 다른 자료형이라면 return 구문을 만나야 된다.
 {
 	// 참고로 Int는 4바이트고 주소 변수는 x64운영체제에서는 8바이트라서 사실 복사하는게 더 코스트가 낮다
 	// 하지만 데이터가 큰 구조체라고 생각하자ㅋㅋ
@@ -73,6 +73,32 @@ int main()
 	Output(&a);
 
 	printf("%d\n", a);
+
+
+	// void
+	// 1. 원본의 자료형을 정하지 않음
+	// 2. 어떠한 타입의 변수의 주소든 다 저장 가능
+	// 3. 역참조 불가능
+	// 4. 주소 연산 불가능
+	void* pVoid = nullptr; // void* 보이드포인터는 그 메모리 주소로 갔을때 어떻게 볼지 정해지지 않은 것이다. 따라서 어떤 데이터는 다 받을 수 있다.
+	float* pFloat = nullptr;
+
+	{
+		int a = 0;
+		float f = 0.f;
+		double d = 0.;
+		long long ll = 0;
+
+		pVoid = &a;
+		pVoid = &f;
+		pVoid = &d;
+		pVoid = &ll; // 아무 자료형이 다 받을 수 있지만
+
+		// *pVoid; // 그 메모리 주소로 갔을 때 어떻게 해석 할지 정해진것이 없어서 역참조가 안된다.
+		// pVoid + 1; // 당연히 주소 연산도 안된다.
+	}
+
+
 
 
 	return 0;
