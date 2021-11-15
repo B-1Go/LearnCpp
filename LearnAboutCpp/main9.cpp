@@ -130,6 +130,3 @@ int main()
 
 	return 0;
 }
-
-// ¥‹√‡≈∞
-// Ctrl + Shift + Space
