@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <wchar.h>
 
 
 // 메모리 영역
@@ -133,7 +134,7 @@ int main()
 		// char(1) 실제로 사용하는 인덱스 갯수는 0~127이다.
 		// wchar(2)
 
-		char c = 'a';
+		char c = 'a'; // 멀티바이트으로 작동하여 문자에 따라서 가변적으로 1바이트 또는 2바이트로 동작한다. 보통은 1바이트 인것 같다.
 		wchar_t wc = L'a'; // 2바이트로 사용하겠다 라고 명시하기 위해 L'a'; 표현한다.
 
 		char szChar[10] = "abcdef"; // 이런 형태의 배열 초기화는 문자 자료형만 가능하다.
@@ -149,6 +150,15 @@ int main()
 		short arrShort[10] = { 97,98,99,100,101,102 };
 
 		int a = 0;
+
+		char szTest[10] = "abc한글"; // 일단 윈동우에 쓰이는 멀티바이트 시스템은 호환성 때문에 쓰지 표준은 아니다. 따라서 앞으로는 표준으로 쓰이는 유니코드, 2바이트 표현 방식으로 쓴다.
+		wchar_t szTestW[10] = L"abc한글";
+	}
+
+	{
+		wchar_t szName[10] = L"Raimod"; // 엄밀히 말하면 메모리초기화 영역에 있다. ROM에 있는건 맞는데 정확히는 메모리초기화 영역이다.
+
+		int iLen = wcslen(szName);
 	}
 
 
