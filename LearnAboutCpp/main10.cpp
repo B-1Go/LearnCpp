@@ -42,6 +42,8 @@ unsigned int GetLength(const wchar_t* _pStr)
 
 void StrCat(wchar_t* _pDest, unsigned int _iBufferSize, const wchar_t* _pSrc)
 {
+	// 예외처리
+	// 이어붙인 최종 문자열 길이가, 목적지 저장 공간을 넘어서려는 경우
 	int iDestLen = GetLength(_pDest);
 	int iSrcLen = GetLength(_pSrc);
 
@@ -51,7 +53,15 @@ void StrCat(wchar_t* _pDest, unsigned int _iBufferSize, const wchar_t* _pSrc)
 	}
 
 	// 문자열 이어 붙이기
+	// 1. Dest 문자열의 끝을 확인(문자열이 이어 붙을 시작 위치)
+	iDestLen; // Dest 문자열 끝 인덱스
 
+	// 2. 반복적으로 Src 문자열을 Dest 끝 위치에 붙치기
+	// 3. Src 문자열의 끝을 만나면 반복 종료
+	for (int i = 0; i < iSrcLen + 1; ++i)
+	{
+		_pDest[iDestLen + i] = _pSrc[i];
+	}
 }
 
 int main()
@@ -68,9 +78,11 @@ int main()
 
 	// 문자열 이어 붙이기
 	wchar_t szString[100] = L"abc";
+	// wcscat_s(szString, 100, L"def");
+	StrCat(szString, 10, L"def");
 
-
-	wcscat_s(szString, 100, L"def");
+	// 과제
+	int Ret = wcscmp(L"abc", L"aba");
 
 	return 0;
 }
