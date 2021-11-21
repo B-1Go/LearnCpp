@@ -64,25 +64,47 @@ void StrCat(wchar_t* _pDest, unsigned int _iBufferSize, const wchar_t* _pSrc)
 	}
 }
 
+int StrRet(const wchar_t* _pLeft, const wchar_t* _pRight)
+{
+	// 예외처리
+	// 문자열이 다르면 경고 메세지
+	int iLeft = GetLength(_pLeft);
+	int iRight = GetLength(_pRight);
+
+	if (iLeft =! iRight)
+	{
+		assert(nullptr);
+	}
+
+	// 2. 하나씩 비교하기
+	// 3. 오른쪽이면 1 왼쪽이면 -1 같으면 0 값 리턴하기
+
+	return 0;
+}
+
+
 int main()
 {
 	wchar_t szName[10] = L"Raimond";
 
 	// int iLen = wcslen(szName);
-	int iLen = GetLength(szName);
+	// int iLen = GetLength(szName);
 
 	// 함수의 오버로딩
-	Test(10);
-	Test(3.14f);
+	// Test(10);
+	// Test(3.14f);
 
 
 	// 문자열 이어 붙이기
-	wchar_t szString[100] = L"abc";
+	// wchar_t szString[10] = L"abc";
 	// wcscat_s(szString, 100, L"def");
-	StrCat(szString, 10, L"def");
+	// StrCat(szString, 10, L"def");
 
 	// 과제
-	int Ret = wcscmp(L"abc", L"aba");
+	// int Ret = wcscmp(L"abc", L"aba");
+
+	printf("bug");
+	// GetLength 에서 버그 발생중 코드 수정 하자;;
 
 	return 0;
 }
