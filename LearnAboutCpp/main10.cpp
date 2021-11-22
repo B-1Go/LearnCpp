@@ -29,7 +29,7 @@ unsigned int GetLength(const wchar_t* _pStr)
 	int i = 0;
 	while (true)
 	{
-		wchar_t c = *(_pStr + 1); // 편한 표현 방식 _pStr[i]
+		wchar_t c = *(_pStr + i); // 편한 표현 방식 _pStr[i]
 
 		if ('\0' == c) // 상수를 왼쪽에 두는 이유는 비교문 작성에 = 이런 오타가 날 수 있기 때문이다. ex) c = '\0'
 		{
@@ -70,16 +70,33 @@ int StrRet(const wchar_t* _pLeft, const wchar_t* _pRight)
 	// 문자열이 다르면 경고 메세지
 	int iLeft = GetLength(_pLeft);
 	int iRight = GetLength(_pRight);
+	int chk = 0;
 
-	if (iLeft =! iRight)
+	if (iLeft != iRight)
 	{
 		assert(nullptr);
 	}
 
-	// 2. 하나씩 비교하기
-	// 3. 오른쪽이면 1 왼쪽이면 -1 같으면 0 값 리턴하기
+	// 비교하기
+	for (int i = 0; i < iLeft; i++)
+	{
+		if (*(_pLeft + i) == *(_pRight + i))
+		{
+			continue;
+		}
+		else if (*(_pLeft + i) < *(_pRight + i))
+		{
+			chk = -1;
+			break;
+		}
+		else
+		{
+			chk = 1;
+			break;
+		}
+	}
 
-	return 0;
+	return chk;
 }
 
 
@@ -88,23 +105,22 @@ int main()
 	wchar_t szName[10] = L"Raimond";
 
 	// int iLen = wcslen(szName);
-	// int iLen = GetLength(szName);
+	int iLen = GetLength(szName);
 
 	// 함수의 오버로딩
-	// Test(10);
-	// Test(3.14f);
+	Test(10);
+	Test(3.14f);
 
 
 	// 문자열 이어 붙이기
-	// wchar_t szString[10] = L"abc";
+	wchar_t szString[10] = L"abc";
 	// wcscat_s(szString, 100, L"def");
-	// StrCat(szString, 10, L"def");
+	StrCat(szString, 10, L"def");
 
 	// 과제
-	// int Ret = wcscmp(L"abc", L"aba");
+	int Ret = wcscmp(L"abc", L"aba");
 
-	printf("bug");
-	// GetLength 에서 버그 발생중 코드 수정 하자;;
+	int test = StrRet(L"abc", L"aba");
 
 	return 0;
 }
