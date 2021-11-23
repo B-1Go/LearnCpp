@@ -70,15 +70,22 @@ int StrRet(const wchar_t* _pLeft, const wchar_t* _pRight)
 	// 문자열이 다르면 경고 메세지
 	int iLeft = GetLength(_pLeft);
 	int iRight = GetLength(_pRight);
+	int iLen = iLeft;
 	int chk = 0;
 
-	if (iLeft != iRight)
+	if (iLeft < iRight)
 	{
-		assert(nullptr);
+		iLen = iLeft;
+		chk = -1;
+	}
+	else
+	{
+		iLen = iRight;
+		chk = 1;
 	}
 
 	// 비교하기
-	for (int i = 0; i < iLeft; i++)
+	for (int i = 0; i < iLen; i++)
 	{
 		if (*(_pLeft + i) == *(_pRight + i))
 		{
@@ -97,6 +104,41 @@ int StrRet(const wchar_t* _pLeft, const wchar_t* _pRight)
 	}
 
 	return chk;
+}
+
+// 풀이
+int StrCmp(const wchar_t* _left, const wchar_t* _right)
+{
+	int leftLen = GetLength(_left);
+	int rightLen = GetLength(_right);
+
+	int iReturn = leftLen;
+	int iLoop = 0;
+
+	if (leftLen < rightLen)
+	{
+		iLoop = leftLen;
+		iReturn = -1;
+	}
+	else if (leftLen > rightLen)
+	{
+		iLoop = rightLen;
+		iReturn = 1;
+	}
+
+	for (int i = 0; i < iLoop; ++i)
+	{
+		if (_left[i] < _right[i])
+		{
+			return -1;
+		}
+		else if (_left[i] > _right[i])
+		{
+			return 1;
+		}
+	}
+
+	return iReturn;
 }
 
 
@@ -120,7 +162,9 @@ int main()
 	// 과제
 	int Ret = wcscmp(L"abc", L"aba");
 
-	int test = StrRet(L"abc", L"aba");
+	int test = StrRet(L"abc", L"abad");
+
+	int iRet = StrCmp(L"abc", L"abcdef");
 
 	return 0;
 }
