@@ -22,6 +22,12 @@ void Test(float a)
 
 }
 
+typedef struct _tagMyST
+{
+	int a; // 구조체의 멤버라고 함.
+	float f; 
+}MYST;
+
 
 unsigned int GetLength(const wchar_t* _pStr)
 {
@@ -165,6 +171,18 @@ int main()
 	int test = StrRet(L"abc", L"abad");
 
 	int iRet = StrCmp(L"abc", L"abcdef");
+
+
+	// 구조체와 포인터
+	MYST s = {};
+
+	MYST* pST = &s;
+
+	(*pST).a = 100;
+	(*pST).f = 3.14f;
+
+	pST->a = 100;
+	pST->f = 3.14f;
 
 	return 0;
 }
