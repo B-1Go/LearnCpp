@@ -12,4 +12,5 @@ https://www.youtube.com/playlist?list=PL4SIC1d_ab-aOxWPucn31NHkQvNPHK1D1
 9. Test.cpp : 26悪 - 26悪
 10. main8.cpp : 29悪 - 31悪
 11. main9.cpp : 32悪 - 37悪
-12. main10.cpp : 38悪 - ??悪
+12. main10.cpp : 38悪 - 41悪
+13. main11.cpp : 42悪 - ??悪
