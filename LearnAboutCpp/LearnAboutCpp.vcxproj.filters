@@ -43,14 +43,11 @@
     <ClCompile Include="Test.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
-    <ClCompile Include="main10.cpp">
-      <Filter>헤더 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="main11.cpp">
-      <Filter>헤더 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Arr.cpp">
       <Filter>Arr</Filter>
+    </ClCompile>
+    <ClCompile Include="main12.cpp">
+      <Filter>헤더 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

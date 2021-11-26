@@ -150,10 +150,7 @@
   <ItemGroup>
     <ClCompile Include="Arr.cpp" />
     <ClCompile Include="func.cpp" />
-    <ClCompile Include="main10.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="main11.cpp" />
+    <ClCompile Include="main12.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

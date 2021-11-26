@@ -65,9 +65,6 @@ int main()
 
 	tArr arr;
 
-	tArr arr2;
-
-	tArr arr3;
 
 	return 0;
 }
