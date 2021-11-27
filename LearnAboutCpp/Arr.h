@@ -5,7 +5,7 @@ typedef struct _tabArr
 {
 	int* pInt;
 	int iCount;
-	int iMaxCount
+	int iMaxCount;
 
 }tArr;
 
@@ -17,7 +17,7 @@ void InitArr(tArr* _pArr);
 void PushBack(tArr* _pArr, int _iData);
 
 // 공간을 재할당하는 함수
-void Reallocate(tArr* _pArr);
+// void Reallocate(tArr* _pArr);
 
 // 배열 메모리 해제 함수
 void ReleaseArr(tArr* _pArr);

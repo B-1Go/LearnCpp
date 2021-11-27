@@ -14,5 +14,7 @@ int main()
 
 	ReleaseArr(&s);
 
+	// 연결형 리스트
+
 	return 0;
 }
