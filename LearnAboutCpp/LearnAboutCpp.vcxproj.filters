@@ -24,6 +24,9 @@
     <Text Include="FileManager.txt">
       <Filter>헤더 파일</Filter>
     </Text>
+    <Text Include="pointer.txt">
+      <Filter>헤더 파일</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="func.h">

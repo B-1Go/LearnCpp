@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="FileManager.txt" />
+    <Text Include="pointer.txt" />
     <Text Include="Tip.txt" />
   </ItemGroup>
   <ItemGroup>
