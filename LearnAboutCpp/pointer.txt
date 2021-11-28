@@ -1,3 +1,5 @@
+#include <iostream>
+
 typedef struct _tagMyst()
 {
 	int a;
@@ -30,6 +32,25 @@ int main()
 
 	pST->a = 10;
 	pST->b = 3.14f;
+
+
+
+	// 동적할당 및 가변자료형 구현할때 반드시 구조체 + 포인터 + 힙메모리(관리) 3가지 개념이 필요하다.
+	
+
+
+	// 힙메모리 할당 함수 (메모리의 주소를 넘겨주는 함수임)
+	
+	malloc(8); // 단위는 1바이트 즉, 8바이트 메모리를 할당함
+	
+	(int*)malloc(16); // malloc은 순순히 주소만 넘겨주므로 void함수이고 내가 어떻게 그 공간을 사용할지 정의해야 한다.
+
+	int* pInt = (int*)malloc(sizeof(int) * 2);
+
+	// 누수 메모리가 생기지 않게 해제도 반드시 해줘야한다.
+
+	free(pInt);
+
 
 	return 0;
 }

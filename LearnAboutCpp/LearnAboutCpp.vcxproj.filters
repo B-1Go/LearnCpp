@@ -16,6 +16,9 @@
     <Filter Include="Arr">
       <UniqueIdentifier>{8bbe745b-73fa-49e8-ad0d-7c672e547919}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Arrf">
+      <UniqueIdentifier>{727f6f51-ba20-4627-98d7-7a625dcc4782}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Tip.txt">
@@ -38,6 +41,9 @@
     <ClInclude Include="Arr.h">
       <Filter>Arr</Filter>
     </ClInclude>
+    <ClInclude Include="Arrf.h">
+      <Filter>Arrf</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="func.cpp">
@@ -51,6 +57,12 @@
     </ClCompile>
     <ClCompile Include="main12.cpp">
       <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Arrf.cpp">
+      <Filter>Arrf</Filter>
+    </ClCompile>
+    <ClCompile Include="mainf.cpp">
+      <Filter>Arrf</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

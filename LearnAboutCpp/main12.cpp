@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <stdio.h>
 #include "Arr.h"
 
 int main()
@@ -10,6 +10,11 @@ int main()
 	for (int i = 0; i < 10; ++i)
 	{
 		PushBack(&s, i);
+	}
+
+	for (int i = 0; i < s.iCount; ++i)
+	{
+		printf("%d\n", s.pInt[i]);
 	}
 
 	ReleaseArr(&s);

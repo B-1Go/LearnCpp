@@ -18,3 +18,4 @@ https://www.youtube.com/playlist?list=PL4SIC1d_ab-aOxWPucn31NHkQvNPHK1D1
 15. Arr.h : 44강
 16. main12 : 45강 - ??강
 17. pointer.txt : 포인터 정의가 헷갈려서 만듬
+18. Arrf.h, Arrf.cpp, mainf.cpp : 가변배열(float) 복습
