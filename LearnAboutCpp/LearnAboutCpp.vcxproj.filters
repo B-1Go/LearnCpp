@@ -19,6 +19,9 @@
     <Filter Include="Arrf">
       <UniqueIdentifier>{727f6f51-ba20-4627-98d7-7a625dcc4782}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LinkedList">
+      <UniqueIdentifier>{85faef4b-5727-46b9-a998-5bc3bbfa829b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Tip.txt">
@@ -44,6 +47,9 @@
     <ClInclude Include="Arrf.h">
       <Filter>Arrf</Filter>
     </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>LinkedList</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="func.cpp">
@@ -63,6 +69,9 @@
     </ClCompile>
     <ClCompile Include="mainf.cpp">
       <Filter>Arrf</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>LinkedList</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
