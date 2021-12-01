@@ -1,5 +1,8 @@
 #include <iostream>
 #include <stdio.h>
+
+#include <time.h>
+
 #include "Arr.h"
 #include "LinkedList.h"
 
@@ -8,11 +11,24 @@ int main()
 	tArr s = {};
 	InitArr(&s);
 
+	// 남수(랜덤)
+	srand(time(nullptr));
+
+	// 값 대입
 	for (int i = 0; i < 10; ++i)
 	{
-		PushBack(&s, i);
+		int iRand = rand() % 100 + 1;
+		PushBack(&s, iRand);
 	}
 
+	printf("정렬전\n");
+	for (int i = 0; i < s.iCount; ++i)
+	{
+		printf("%d\n", s.pInt[i]);
+	}
+
+	sort(&s);
+	printf("정렬후\n");
 	for (int i = 0; i < s.iCount; ++i)
 	{
 		printf("%d\n", s.pInt[i]);

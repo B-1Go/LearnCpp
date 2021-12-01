@@ -21,3 +21,6 @@ void PushBack(tArr* _pArr, int _iData);
 
 // 배열 메모리 해제 함수
 void ReleaseArr(tArr* _pArr);
+
+// 데이터 정렬 함수
+void sort(tArr* _pArr);

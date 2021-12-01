@@ -141,6 +141,7 @@
   <ItemGroup>
     <Text Include="FileManager.txt" />
     <Text Include="pointer.txt" />
+    <Text Include="Quest(필수).txt" />
     <Text Include="Tip.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -156,12 +157,14 @@
     <ClCompile Include="func.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main12.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="mainf.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Sorttest.cpp" />
+    <ClCompile Include="Sorttest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

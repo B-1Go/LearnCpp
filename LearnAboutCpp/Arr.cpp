@@ -52,3 +52,32 @@ void ReleaseArr(tArr* _pArr)
 	_pArr->iCount = 0;
 	_pArr->iMaxCount = 0;
 }
+
+void sort(tArr* _pArr)
+{
+	// 1개 일때 예외 처리
+	if (_pArr->iCount <= 1)
+		return;
+
+	while (true)
+	{
+		bool bFinish = true;
+
+		// 오름차순
+		int iLoop = _pArr->iCount - 1;
+		for (int i = 0; i < iLoop; ++i)
+		{
+			if (_pArr->pInt[i] > _pArr->pInt[i + 1])
+			{
+				int iTemp = _pArr->pInt[i];
+				_pArr->pInt[i] = _pArr->pInt[i + 1];
+				_pArr->pInt[i + 1] = iTemp;
+
+				bFinish = false;
+			}
+		}
+
+		if (bFinish)
+			break;
+	}
+}

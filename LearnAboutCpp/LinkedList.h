@@ -4,7 +4,7 @@
 typedef struct _tagNode
 {
 	int iData;
-	tNode* pNextNode;
+	struct _tagNode* pNextNode;
 }tNode;
 
 typedef struct _tagList
