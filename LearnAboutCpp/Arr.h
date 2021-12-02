@@ -23,4 +23,4 @@ void PushBack(tArr* _pArr, int _iData);
 void ReleaseArr(tArr* _pArr);
 
 // 데이터 정렬 함수
-void sort(tArr* _pArr);
+void sort(tArr* _pArr, void(*SortFunc)(int*, int));
