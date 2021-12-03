@@ -10,13 +10,15 @@ typedef struct _tagNode
 typedef struct _tagList
 {
 	tNode* pHeadNode;
-	int icount;
+	int iCount;
 }tLinkedList;
 
-// 초기화
+// 연결형 리스트 초기화
+void InitList(tLinkedList* _pList);
+
+// 연결형 리스트 데이터 추가
+void PushBack(tLinkedList* _pList, int _iData);
 
 
-// 데이터 넣기
-
-
-// 메모리 해제
+// 연결형 리스트 메모리 해제
+void ReleaseList(tLinkedList* _pList);

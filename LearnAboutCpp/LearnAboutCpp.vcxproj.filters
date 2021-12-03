@@ -76,7 +76,7 @@
     <ClCompile Include="LinkedList.cpp">
       <Filter>LinkedList</Filter>
     </ClCompile>
-    <ClCompile Include="Sorttest.cpp">
+    <ClCompile Include="main13.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
   </ItemGroup>

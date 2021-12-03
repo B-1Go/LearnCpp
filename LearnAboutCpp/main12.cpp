@@ -57,7 +57,7 @@ int main()
 	tArr s = {};
 	InitArr(&s);
 
-	// 남수(랜덤)
+	// 난수(랜덤)
 	srand(time(nullptr));
 
 	// 값 대입
