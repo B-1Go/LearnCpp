@@ -42,7 +42,35 @@ void PushBack(tLinkedList* _pList, int _iData)
 	++_pList->iCount;
 }
 
+void PushFront(tLinkedList* _pList, int _iData)
+{
+	// 과제
+	// 연결리스트 PushFront 구현해보기
+}
+
+void Release(tNode* _pNode)
+{
+	if (nullptr == _pNode)
+		return;
+
+	Release(_pNode->pNextNode);
+
+	free(_pNode);
+}
+
+
 void ReleaseList(tLinkedList* _pList)
 {
-	// 재귀함수 또는 반복문으로 구현가능
+	// 재귀함수
+	// Release(_pList->pHeadNode);
+
+	// 반복문
+	tNode* pDeleteNode = _pList->pHeadNode;
+
+	while (pDeleteNode)
+	{
+		tNode* pNext = pDeleteNode->pNextNode;
+		free(pDeleteNode);
+		pDeleteNode = pNext;
+	}
 }
