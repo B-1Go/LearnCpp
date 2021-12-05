@@ -44,8 +44,12 @@ void PushBack(tLinkedList* _pList, int _iData)
 
 void PushFront(tLinkedList* _pList, int _iData)
 {
-	// 과제
-	// 연결리스트 PushFront 구현해보기
+	tNode* pNode = (tNode*)malloc(sizeof(tNode));
+
+	pNode->iData = _iData;
+	pNode->pNextNode = _pList->pHeadNode;
+	_pList->pHeadNode = pNode;
+	++_pList->iCount;
 }
 
 void Release(tNode* _pNode)
