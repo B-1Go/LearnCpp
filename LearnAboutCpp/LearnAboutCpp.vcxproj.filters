@@ -64,9 +64,6 @@
     <ClCompile Include="Arr.cpp">
       <Filter>Arr</Filter>
     </ClCompile>
-    <ClCompile Include="main12.cpp">
-      <Filter>헤더 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Arrf.cpp">
       <Filter>Arrf</Filter>
     </ClCompile>
@@ -77,6 +74,9 @@
       <Filter>LinkedList</Filter>
     </ClCompile>
     <ClCompile Include="main13.cpp">
+      <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="main14.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
   </ItemGroup>

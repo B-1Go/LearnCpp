@@ -44,11 +44,15 @@ void PushBack(tLinkedList* _pList, int _iData)
 
 void PushFront(tLinkedList* _pList, int _iData)
 {
+	// 새로 생성시킨 노드의 다음을 기존의 헤드로 지정한다.
 	tNode* pNode = (tNode*)malloc(sizeof(tNode));
-
 	pNode->iData = _iData;
 	pNode->pNextNode = _pList->pHeadNode;
+	
+	// 리스트의 헤드노드 포인터를 갱신한다.
 	_pList->pHeadNode = pNode;
+
+	// 데이터 카운트 증가
 	++_pList->iCount;
 }
 
