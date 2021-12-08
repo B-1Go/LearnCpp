@@ -53,6 +53,9 @@
     <ClInclude Include="LinkedList.h">
       <Filter>LinkedList</Filter>
     </ClInclude>
+    <ClInclude Include="CArr.h">
+      <Filter>Arr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="func.cpp">
@@ -73,10 +76,10 @@
     <ClCompile Include="LinkedList.cpp">
       <Filter>LinkedList</Filter>
     </ClCompile>
-    <ClCompile Include="main13.cpp">
-      <Filter>헤더 파일</Filter>
+    <ClCompile Include="CArr.cpp">
+      <Filter>Arr</Filter>
     </ClCompile>
-    <ClCompile Include="main14.cpp">
+    <ClCompile Include="main15.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
   </ItemGroup>

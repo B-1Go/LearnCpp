@@ -22,4 +22,5 @@ https://www.youtube.com/playlist?list=PL4SIC1d_ab-aOxWPucn31NHkQvNPHK1D1
 19. Sorttest.cpp : 배열길이구하기 + 버블 정렬
 20. Quest(필수).txt : 정렬은 시간들여서 반드시 공부
 21. LinkedList.cpp, LinkedList.h, main13: 47강 - 51강
-22. main14.cpp : 52강 - ??강
+22. main14.cpp : 52강 - 54강
+23. main15.cpp : 55강 - ??강
