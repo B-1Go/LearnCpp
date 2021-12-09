@@ -22,6 +22,9 @@
     <Filter Include="LinkedList">
       <UniqueIdentifier>{85faef4b-5727-46b9-a998-5bc3bbfa829b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="StructandClass">
+      <UniqueIdentifier>{48f3096b-cd85-4602-a8d1-c911628f298b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Tip.txt">
@@ -56,6 +59,12 @@
     <ClInclude Include="CArr.h">
       <Filter>Arr</Filter>
     </ClInclude>
+    <ClInclude Include="Cstyle.h">
+      <Filter>StructandClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Cppstyle.h">
+      <Filter>StructandClass</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="func.cpp">
@@ -81,6 +90,15 @@
     </ClCompile>
     <ClCompile Include="main15.cpp">
       <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="StructandClass.cpp">
+      <Filter>StructandClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Cstyle.cpp">
+      <Filter>StructandClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Cppstyle.cpp">
+      <Filter>StructandClass</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
