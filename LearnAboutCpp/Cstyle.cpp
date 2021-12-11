@@ -90,7 +90,7 @@ void PushInsert(tCArr* _ptCArr, int _idx, int _iData)
 		Resize(_ptCArr);
 	}
 	
-	// 3. 데이터를 넣기 위해 해당 인덱스부터 뒤로 한칸씩 이동
+	// 3. 데이터를 넣기 위해 맨뒤부터 해당인데스까지 한칸씩 뒤로 이동
 	for (int i = _ptCArr->iCount; i > _idx; --i)
 	{
 		_ptCArr->pInt[i] = _ptCArr->pInt[i - 1];
@@ -151,10 +151,13 @@ void ReleaseArr(tCArr* _ptCArr)
 
 void MergeArr(tCArr* _ptCArr1, tCArr* _ptCArr2)
 {
-	// 1. 배열1이 배열2를 다 수용할 수 있는기? 배열크기가 되는가?
+	// 1. 배열1이 배열2를 다 수용할 수 있는가? 배열크기가 되는가?
 	if (_ptCArr1->iMax <= _ptCArr1->iCount + _ptCArr2->iCount)
 	{
 		Resize(_ptCArr1, _ptCArr1->iCount + _ptCArr2->iCount + 10);
+
+		// 데이터 크기 수정
+		_ptCArr1->iMax = _ptCArr1->iCount + _ptCArr2->iCount + 10;
 	}
 
 	// 2. 배열1 뒤에 배열2 데이터 붙이기
@@ -166,11 +169,36 @@ void MergeArr(tCArr* _ptCArr1, tCArr* _ptCArr2)
 	// 3. 데이터 카운트 수정
 	_ptCArr1->iCount = _ptCArr1->iCount + _ptCArr2->iCount;
 
-	// 4. 데이터 크기 수정
-	_ptCArr1->iMax = _ptCArr1->iCount + _ptCArr2->iCount + 10;
+	// 4. _ptCArr2 메모리 헤제
+	ReleaseArr(_ptCArr2);
 }
 
 void MergeArr(tCArr* _ptCArr1, tCArr* _ptCArr2, int _idx)
 {
+	// 1. 배열1이 배열2를 다 수용할 수 있는가? 배열크기가 되는가?
+	if (_ptCArr1->iMax <= _ptCArr1->iCount + _ptCArr2->iCount)
+	{
+		Resize(_ptCArr1, _ptCArr1->iCount + _ptCArr2->iCount + 10);
 
+		// 데이터 크기 수정
+		_ptCArr1->iMax = _ptCArr1->iCount + _ptCArr2->iCount + 10;
+	}
+
+	// 2. 데이터를 넣기 위해 맨뒤부터 해당인데스까지 배열2 데이터크기 만큼 뒤로 이동
+	for (int i = _ptCArr1->iCount; i > _idx; --i)
+	{
+		_ptCArr1->pInt[i + _ptCArr2->iCount] = _ptCArr1->pInt[i - 1];
+	}
+
+	// 3. 배열1에 해당 위치부터 배열2 데이터 넣기
+	for (int i = 0; i < _ptCArr2->iCount; ++i)
+	{
+		_ptCArr1->pInt[i + _idx] = _ptCArr2->pInt[i];
+	}
+
+	// 4. 데이터 카운트 수정
+	_ptCArr1->iCount = _ptCArr1->iCount + _ptCArr2->iCount;
+
+	// 5. 배열2 메모리 해제
+	ReleaseArr(_ptCArr2);
 }

@@ -27,21 +27,33 @@ int main()
 
 	BubbleSort(&arr);
 
-	// 데이터 출력해서 보기
-	for (int i = 0; i < arr.iCount; ++i)
+	// 데이터 삽입 구현 테스트
+	tCArr arr2 = {};
+
+	// 초기화
+	InitalArr(&arr2);
+
+	PushBack(&arr2, 99);
+
+	// 데이터 넣기
+	for (int i = 20; i < 30; ++i)
 	{
-		printf("%d\n", arr.pInt[i]);
+		PushBack(&arr2, i);
 	}
+
+	// 머지구현 테스트
+	MergeArr(&arr, &arr2);
+
+	tCArr arr3 = {};
+	InitalArr(&arr3);
+	for (int i = 30; i < 40; ++i)
+	{
+		PushBack(&arr3, i);
+	}
+	MergeArr(&arr, &arr3, 5);
 
 	// 메모리 해제
 	ReleaseArr(&arr);
 
 	return 0;
 }
-
-// TODO
-// 1. 머지 구현하기(완료) -> 테스트 해보기!
-
-// 1. operater = 기능 완벽구현 해보기
-// 2. operater[] 기능 완벽구현 해보기
-// 3. arr을 그냥 배열로 만들어보기
