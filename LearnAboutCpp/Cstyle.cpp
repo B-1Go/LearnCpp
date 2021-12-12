@@ -57,7 +57,7 @@ void Resize(tCArr* _ptCArr, int _iDataSizeof)
 	_ptCArr->iMax = _iDataSizeof;
 }
 
-void PushBack(tCArr* _ptCArr, int _iData)
+void PushBackArr(tCArr* _ptCArr, int _iData)
 {
 	// 1. 배열의 사이즈가 충분한가
 	if (_ptCArr->iMax <= _ptCArr->iCount)
@@ -74,12 +74,12 @@ void PushBack(tCArr* _ptCArr, int _iData)
 	_ptCArr->iCount++;
 }
 
-void PushInsert(tCArr* _ptCArr, int _idx, int _iData)
+void PushInsertArr(tCArr* _ptCArr, int _idx, int _iData)
 {
 	// 1. 배열 중간에 삽입, 만약 맨뒤 이상의 인덱스에 넣게되면 PushBack 이 이루어지게 함
 	if (_idx >= _ptCArr->iCount)
 	{
-		PushBack(_ptCArr, _iData);
+		PushBackArr(_ptCArr, _iData);
 		return;
 	}
 
@@ -202,3 +202,42 @@ void MergeArr(tCArr* _ptCArr1, tCArr* _ptCArr2, int _idx)
 	// 5. 배열2 메모리 해제
 	ReleaseArr(_ptCArr2);
 }
+
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+void InitList(tList* _pList)
+{
+	_pList->pHeadNode = nullptr;
+	_pList->iCount = 0;
+}
+
+void PushBack(tList* _pList, int _iData)
+{
+	// 데이터 저장할 노드 생성
+	tNode* pNode = (tNode*)malloc(sizeof(tNode));
+
+	// 데이터 복사
+	pNode->iData = _iData;
+	_pList->pHeadNode = nullptr;
+
+	// 처음인지 아닌지 확인
+	if (nullptr == _pList->pHeadNode)
+	{
+		_pList->pHeadNode = pNode;
+	}
+	else
+	{
+		for (int i = 0; i < _pList->iCount; ++i)
+		{
+			// 가장 마지막 노드를 찾아서
+		}
+	}
+}
+
+void Insert(tList* _pList, int _idx, int _iData)
+{
+}
+

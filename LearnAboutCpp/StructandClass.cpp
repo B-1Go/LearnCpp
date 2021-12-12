@@ -16,12 +16,12 @@ int main()
 	// 데이터 넣기
 	for (int i = 0; i < 10; ++i)
 	{
-		PushBack(&arr, i);
+		PushBackArr(&arr, i);
 	}
-	PushBack(&arr, 100);
+	PushBackArr(&arr, 100);
 
-	PushInsert(&arr, 3, 500);
-	PushInsert(&arr, 100, 0);
+	PushInsertArr(&arr, 3, 500);
+	PushInsertArr(&arr, 100, 0);
 
 	DeleteArr(&arr, 5);
 
@@ -33,12 +33,12 @@ int main()
 	// 초기화
 	InitalArr(&arr2);
 
-	PushBack(&arr2, 99);
+	PushBackArr(&arr2, 99);
 
 	// 데이터 넣기
 	for (int i = 20; i < 30; ++i)
 	{
-		PushBack(&arr2, i);
+		PushBackArr(&arr2, i);
 	}
 
 	// 머지구현 테스트
@@ -48,7 +48,7 @@ int main()
 	InitalArr(&arr3);
 	for (int i = 30; i < 40; ++i)
 	{
-		PushBack(&arr3, i);
+		PushBackArr(&arr3, i);
 	}
 	MergeArr(&arr, &arr3, 5);
 
@@ -57,3 +57,6 @@ int main()
 
 	return 0;
 }
+
+// TODO
+// 1. 연결형 리스트 C스타일로 구현하기
