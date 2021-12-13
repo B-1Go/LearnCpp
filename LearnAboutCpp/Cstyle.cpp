@@ -208,13 +208,13 @@ void MergeArr(tCArr* _ptCArr1, tCArr* _ptCArr2, int _idx)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-void InitList(tList* _pList)
+void InitalList(tList* _pList)
 {
 	_pList->pHeadNode = nullptr;
 	_pList->iCount = 0;
 }
 
-void PushBack(tList* _pList, int _iData)
+void PushBackList(tList* _pList, int _iData)
 {
 	// 데이터 저장할 노드 생성
 	tNode* pNode = (tNode*)malloc(sizeof(tNode));
@@ -227,17 +227,26 @@ void PushBack(tList* _pList, int _iData)
 	if (nullptr == _pList->pHeadNode)
 	{
 		_pList->pHeadNode = pNode;
+		++_pList->iCount;
+		return;
 	}
-	else
+	
+	// 말단 노드를 찾아서 데이터 추가
+	tNode* pCurNode = _pList->pHeadNode;
+	while(pCurNode->pNextNode)
 	{
-		for (int i = 0; i < _pList->iCount; ++i)
-		{
-			// 가장 마지막 노드를 찾아서
-		}
+		pCurNode = pCurNode->pNextNode;
 	}
+	pCurNode->pNextNode = pNode;
+	++_pList->iCount;
 }
 
-void Insert(tList* _pList, int _idx, int _iData)
+void PushInsertList(tList* _pList, int _idx, int _iData)
 {
+
 }
 
+void ReleaseList(tList* _pList)
+{
+
+}

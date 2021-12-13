@@ -55,3 +55,6 @@ void InitalList(tList* _pList);
 // 연결형 리스트 데이터 추가
 void PushBackList(tList* _pList, int _iData);
 void PushInsertList(tList* _pList, int _idx, int _iData);
+
+// 연결형 리스트 메모리 해제
+void ReleaseList(tList* _pList);
