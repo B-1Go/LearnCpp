@@ -64,9 +64,11 @@ int main()
 	PushBackList(&list, 10);
 	PushBackList(&list, 20);
 	PushBackList(&list, 30);
+	PushInsertList(&list, 2, 25);
 
 	return 0;
 }
 
 // TODO
-// 1. 연결형 리스트 C스타일로 구현하기 -> pushbacklist 테스트 하기(실패) -> 수정하기
+// 1. 연결형 리스트 C스타일로 구현하기 -> 삽입구현 완료 -> 테스트 완료 -> 메모리해제 구현하기
+// 2. 연결형 쌍방향 리스트도 구현하기

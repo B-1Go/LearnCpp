@@ -76,6 +76,12 @@ void PushBackArr(tCArr* _ptCArr, int _iData)
 
 void PushInsertArr(tCArr* _ptCArr, int _idx, int _iData)
 {
+	// 음수는 예외 처리
+	if (_idx < 0)
+	{
+		assert(nullptr);
+	}
+
 	// 1. 배열 중간에 삽입, 만약 맨뒤 이상의 인덱스에 넣게되면 PushBack 이 이루어지게 함
 	if (_idx >= _ptCArr->iCount)
 	{
@@ -106,6 +112,12 @@ void PushInsertArr(tCArr* _ptCArr, int _idx, int _iData)
 
 void DeleteArr(tCArr* _ptCArr, int _idx)
 {
+	// 음수는 예외 처리
+	if (_idx < 0)
+	{
+		assert(nullptr);
+	}
+
 	// 0. 데이터가 없는 부분이면 경고문
 	if (_idx >= _ptCArr->iCount)
 	{
@@ -175,6 +187,12 @@ void MergeArr(tCArr* _ptCArr1, tCArr* _ptCArr2)
 
 void MergeArr(tCArr* _ptCArr1, tCArr* _ptCArr2, int _idx)
 {
+	// 음수는 예외 처리
+	if (_idx < 0)
+	{
+		assert(nullptr);
+	}
+
 	// 1. 배열1이 배열2를 다 수용할 수 있는가? 배열크기가 되는가?
 	if (_ptCArr1->iMax <= _ptCArr1->iCount + _ptCArr2->iCount)
 	{
@@ -221,7 +239,7 @@ void PushBackList(tList* _pList, int _iData)
 
 	// 데이터 복사
 	pNode->iData = _iData;
-	_pList->pHeadNode = nullptr;
+	pNode->pNextNode = nullptr;
 
 	// 처음인지 아닌지 확인
 	if (nullptr == _pList->pHeadNode)
@@ -243,7 +261,43 @@ void PushBackList(tList* _pList, int _iData)
 
 void PushInsertList(tList* _pList, int _idx, int _iData)
 {
+	// 음수는 예외 처리
+	if (_idx < 0)
+	{
+		assert(nullptr);
+	}
 
+	// 들어있는 데이터보다 높은 인덱스는 푸쉬백 처리한다.
+	if (_idx >= _pList->iCount)
+	{
+		PushBackList(_pList, _iData);
+		return;
+	}
+
+	// 데이터 저장할 노드 생성
+	tNode* pNode = (tNode*)malloc(sizeof(tNode));
+
+	// 데이터 복사
+	pNode->iData = _iData;
+	pNode->pNextNode = nullptr;
+
+	// 처음인지 아닌지 확인
+	if (nullptr == _pList->pHeadNode)
+	{
+		_pList->pHeadNode = pNode;
+		++_pList->iCount;
+		return;
+	}
+
+	// 해당 인덱스까지 반복한다음 삽입해준다.
+	tNode* pCurNode = _pList->pHeadNode; // List에서 노드로 참조를 함 따라서 _idx - 1 보정을 해줘야함
+	for (int i = 0; i < _idx - 1; ++i)
+	{
+		pCurNode = pCurNode->pNextNode;
+	}
+	pNode->pNextNode = pCurNode->pNextNode;
+	pCurNode->pNextNode = pNode;
+	++_pList->iCount;
 }
 
 void ReleaseList(tList* _pList)
