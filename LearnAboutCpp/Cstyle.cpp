@@ -302,5 +302,12 @@ void PushInsertList(tList* _pList, int _idx, int _iData)
 
 void ReleaseList(tList* _pList)
 {
+	tNode* pDelNode = _pList->pHeadNode; //_pList 의 tList 자료형은 main()함수가 종료되면 main()스택에서 알아서 지운다.
 
+	while (pDelNode)
+	{
+		tNode* pTempNode = pDelNode->pNextNode;
+		free(pDelNode);
+		pDelNode = pTempNode;		
+	}
 }
