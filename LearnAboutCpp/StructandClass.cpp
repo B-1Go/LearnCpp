@@ -6,6 +6,7 @@
 
 int main()
 {
+	//// 가변배열 구현완료!
 	//tCArr arr = {};
 
 	//// 초기화
@@ -57,20 +58,26 @@ int main()
 
 	//---------------------------------------------------------------------------------------------------------------------------------------------------
 
-	tList list = {};
+	//// 연결형리스트 구현완료!
+	//tList list = {};
 
-	InitalList(&list);
+	//InitalList(&list);
 
-	PushBackList(&list, 10);
-	PushBackList(&list, 20);
-	PushBackList(&list, 30);
-	PushInsertList(&list, 2, 25);
+	//PushBackList(&list, 10);
+	//PushBackList(&list, 20);
+	//PushBackList(&list, 30);
+	//PushInsertList(&list, 2, 25);
 
-	ReleaseList(&list);
+	//ReleaseList(&list);
+
+	//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+	// cpp스타일 가변배열 구현
+
+
 
 	return 0;
 }
 
 // TODO
-// 1. 연결형 리스트 C스타일로 구현하기(완료!)
-// 2. 연결형 쌍방향 리스트도 구현하기
+// 1. class 가변배열구현하기
