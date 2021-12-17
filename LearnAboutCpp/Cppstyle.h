@@ -13,5 +13,7 @@ public:
 
 public:
 	void push_back(int _iData);
+	void push_insert(int _idx, int _iData);
 	void resize(int _iResizeValue);
+	void show_data();
 };

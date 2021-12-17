@@ -11,7 +11,7 @@ public:
 	void resize(int _iResizeCount);
 
 
-	int& operator[] (int idx);
+	int& operator[] (int idx); //레퍼런스
 
 public:
 	// 생성자

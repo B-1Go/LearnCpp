@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "Cstyle.h"
+#include "Cppstyle.h"
 
 int main()
 {
@@ -73,11 +74,17 @@ int main()
 	//---------------------------------------------------------------------------------------------------------------------------------------------------
 
 	// cpp스타일 가변배열 구현
+	pCArr carr;
+	carr.push_back(10);
+	carr.push_back(20);
+	carr.push_back(30);
+	carr.show_data();
 
-
+	carr.push_insert(1, 15);
+	carr.show_data();
 
 	return 0;
 }
 
 // TODO
-// 1. class 가변배열구현하기
+// 1. class 연결형리스트 구현하기
