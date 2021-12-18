@@ -82,5 +82,15 @@ int main()
 	// 원본을 참조한다.
 	// 참조변수를 통해서 직접적으로 원본을 수정 할 수 있다.
 
+	// C스타일
+	int* pInt;
+	pInt = (int*)malloc(sizeof(int)*8);
+	free(pInt);
+
+	// Cpp스타일 위와 완전히 동일
+	int* pInt;
+	pInt = new int[2];
+	delete pInt;
+
 	return 0;
 }

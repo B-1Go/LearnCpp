@@ -71,3 +71,48 @@ void pCArr::show_data()
 		printf("%d: %d\n", i, m_pInt[i]);
 	}
 }
+
+//-------------------------------------------------------------------------------------------------------------
+
+pList::pList()
+	: m_iCount(0)
+	, m_pHeadNode(nullptr)
+{
+}
+
+pList::~pList()
+{
+	//
+}
+
+void pList::push_back(int _iData)
+{
+	// 1. 처음인지 아닌지 검사
+	if (nullptr == m_pHeadNode)
+	{
+		m_pHeadNode = new tabNode;
+		m_pHeadNode->iData = _iData;
+		m_pHeadNode->pNextNode = nullptr;
+		m_iCount++;
+		return;
+	}
+
+	// 2. 말단노드 찾기
+	tabNode* pTemp = m_pHeadNode;
+	for (int i = 0; i < m_iCount - 1; ++i)
+	{
+		tabNode* Temp = pTemp;
+		pTemp = Temp->pNextNode;
+	}
+	
+	// 3. 말단노드에 새로운 노드 만들고 이동하기
+	pTemp->pNextNode = new tabNode;
+	pTemp = pTemp->pNextNode;
+
+	// 4. 새로만든 노드에 데이터 넣기
+	pTemp->iData = _iData;
+	pTemp->pNextNode = nullptr;
+	
+	// 5. 데이터 카운트 증가시키기
+	m_iCount++;
+}

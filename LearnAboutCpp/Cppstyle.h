@@ -17,3 +17,26 @@ public:
 	void resize(int _iResizeValue);
 	void show_data();
 };
+
+struct tabNode
+{
+	int iData;
+	tabNode* pNextNode;
+};
+
+class pList
+{
+private:
+	tabNode* m_pHeadNode;
+	int m_iCount;
+
+public:
+	pList();
+	~pList();
+
+public:
+	void push_back(int _iData);
+	void psuh_insert(int _Idx, int _iData);
+	void show_data();
+};
+

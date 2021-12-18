@@ -73,15 +73,22 @@ int main()
 
 	//---------------------------------------------------------------------------------------------------------------------------------------------------
 
-	// cpp스타일 가변배열 구현
-	pCArr carr;
-	carr.push_back(10);
-	carr.push_back(20);
-	carr.push_back(30);
-	carr.show_data();
+	//// cpp스타일 가변배열 구현
+	//pCArr carr;
+	//carr.push_back(10);
+	//carr.push_back(20);
+	//carr.push_back(30);
+	//carr.show_data();
 
-	carr.push_insert(1, 15);
-	carr.show_data();
+	//carr.push_insert(1, 15);
+	//carr.show_data();
+
+	// cpp스타일 연결형 리스트 구현
+	pList list;
+	list.push_back(10);
+	list.push_back(20);
+	list.push_back(30);
+
 
 	return 0;
 }
