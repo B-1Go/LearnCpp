@@ -18,6 +18,8 @@ public:
 	void show_data();
 };
 
+//------------------------------------------------------------------------------------------------------------------------
+
 struct tabNode
 {
 	int iData;
@@ -37,6 +39,5 @@ public:
 public:
 	void push_back(int _iData);
 	void psuh_insert(int _Idx, int _iData);
-	void show_data();
 };
 

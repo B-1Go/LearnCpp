@@ -82,7 +82,15 @@ pList::pList()
 
 pList::~pList()
 {
-	//
+	// pList는 main() 스택메모리에 있으므로 함수가 종료되면 알아서 메모리가 해제된다.
+	tabNode* pTemp = m_pHeadNode;
+	for (int i = 0; i < m_iCount - 1; ++i)
+	{
+		tabNode* Temp = pTemp;
+		delete pTemp;
+		pTemp = Temp->pNextNode;
+	}
+	m_iCount = 0;
 }
 
 void pList::push_back(int _iData)
@@ -114,5 +122,32 @@ void pList::push_back(int _iData)
 	pTemp->pNextNode = nullptr;
 	
 	// 5. 데이터 카운트 증가시키기
+	m_iCount++;
+}
+
+void pList::psuh_insert(int _Idx, int _iData)
+{
+	// 1. 처음인지 아닌지 체크 or 현재 카운트보다 큰 인덱스인지 아닌지
+	if (nullptr == m_pHeadNode || _Idx >= m_iCount)
+	{
+		push_back(_iData);
+		return;
+	}
+
+	// 2. _Idx 노드 찾기
+	tabNode* pTemp = m_pHeadNode;
+	for (int i = 0; i < _Idx - 1; ++i)
+	{
+		tabNode* Temp = pTemp;
+		pTemp = Temp->pNextNode;
+	}
+
+	// 3. 새로운 노드 생성해서 데이터 넣기
+	tabNode* pIdxNode = new tabNode;
+	pIdxNode->iData = _iData;
+	pIdxNode->pNextNode = pTemp->pNextNode;
+	pTemp->pNextNode = pIdxNode;
+
+	// 4. 데이터 카운트 증가
 	m_iCount++;
 }

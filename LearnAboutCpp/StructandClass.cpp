@@ -85,13 +85,16 @@ int main()
 
 	// cpp스타일 연결형 리스트 구현
 	pList list;
+	list.psuh_insert(0, 5);
 	list.push_back(10);
 	list.push_back(20);
 	list.push_back(30);
+	list.psuh_insert(2, 15);
+	list.psuh_insert(99, 40);
 
 
 	return 0;
 }
 
 // TODO
-// 1. class 연결형리스트 구현하기
+// 1. 레퍼런스 주소 공부하기
