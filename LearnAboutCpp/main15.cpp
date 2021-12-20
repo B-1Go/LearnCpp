@@ -16,6 +16,25 @@ public:
 	}
 };
 
+
+//int Add(int a, int b)
+//{
+//	return a + b;
+//}
+//
+//float Add(float f, float f1)
+//{
+//	return f + f1;
+//}
+
+template<typename T> // T 치환자료형
+T Add(T a, T b)
+{
+	return a + b;
+}
+
+
+
 int main()
 {
 	// 구조체 --> 클래스
@@ -61,6 +80,12 @@ int main()
 	// 래퍼런스로 진짜 배열처럼 구현했는데 레퍼런스와 포인터를 좀더 이해 해야한다.
 	int iData = carr[1];
 	carr[1] = 100;
+
+
+	// 함수 템플릿
+	int i = Add<int>(10, 20); // Add는 Add인데<T> 자리에 int가 들어간 자료형
+	int i2 = Add(30, 40); // 함수처럼 생겼지만 이 경우에는 컴파일러가 치환자료형에 int를 넣어준 것 이다.
+	Add<int>(100, 200); // Add가 함수냐? -> 아니다 함수 와 함수 템플릿은 엄연히 다르다
 
 	return 0;
 }

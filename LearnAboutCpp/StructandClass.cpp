@@ -95,6 +95,3 @@ int main()
 
 	return 0;
 }
-
-// TODO
-// 1. 레퍼런스 주소 공부하기

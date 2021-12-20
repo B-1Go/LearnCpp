@@ -92,5 +92,18 @@ int main()
 	pInt = new int[2];
 	delete pInt;
 
+
+	// 포인터와 레퍼런스 차이점 https://gracefulprograming.tistory.com/11
+	1. NULL 허용 여부 -> 불가능 -> 매개변수가 NULL을 허용하는지 여부는 프로그램을 설계할 때 굉장히 중요한 부분이다.
+	2. 참조 대상 할당 및 접근 -> 포인터는 할당 할 때 참조 대상에 대해 & 연산을 통해 주소값을 할당함. 반면 레퍼런스에는 참조 대상을 그대로 할당한다.
+	
+	int a = 10;
+	int *p = &a; // 포인터는 주소값을 할당
+	int &r = a; // 레퍼런스는 대상을 직접 할당
+
+	struct person peter; 
+	isBirthdayByPointer(&peter); // 주소값 입력 
+	isBirthdayByReference(peter); // 직접 입력
+
 	return 0;
 }
