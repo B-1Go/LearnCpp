@@ -71,15 +71,22 @@ int main()
 
 	ReleaseArr(&arr);
 
-	// CArr 예시
-	CArr carr;
+
+	// 클래스 템플릿 -> 헤더에 구현해줘야 한다. 컴파일러가 main은 헤더에 선언된 함수로 문제 없이 컴파일이 되는데 구현한 cpp 파일은 치환자료형이 그대로 있기 때문에 문제가 됨.
+	CArr<int> carr;
 	carr.push_back(10);
 	carr.push_back(20);
 	carr.push_back(30);
 
-	// 래퍼런스로 진짜 배열처럼 구현했는데 레퍼런스와 포인터를 좀더 이해 해야한다.
 	int iData = carr[1];
-	carr[1] = 100;
+
+
+	CArr<float> farr;
+	farr.push_back(3.14f);
+	farr.push_back(6.28f);
+	farr.push_back(30.444f);
+
+	float fData = farr[1];
 
 
 	// 함수 템플릿

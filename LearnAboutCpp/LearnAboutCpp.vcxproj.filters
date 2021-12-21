@@ -85,9 +85,6 @@
     <ClCompile Include="LinkedList.cpp">
       <Filter>LinkedList</Filter>
     </ClCompile>
-    <ClCompile Include="CArr.cpp">
-      <Filter>Arr</Filter>
-    </ClCompile>
     <ClCompile Include="main15.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
