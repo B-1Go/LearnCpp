@@ -13,8 +13,9 @@ private:
 public:
 	void push_back(const T& _Data); // Push_back 함수에 데이터 복사가 비효율적이여서 참조 하는 방식으로 바꿈
 	void resize(int _iResizeCount);
-
-
+	T* data() { return m_pData; }
+	int size() { return m_iCount; }
+	int capacity() { return m_iMaxCount; }
 	T& operator[] (int idx); //레퍼런스
 
 public:

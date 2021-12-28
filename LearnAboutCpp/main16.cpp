@@ -2,6 +2,10 @@
 
 #include "CList.h"
 
+#include <vector>
+#include <list>
+
+
 namespace MYSPACE
 {
 	// 네임스페이스는 말 그대로 이름을 지어주는 것이다.
@@ -25,6 +29,10 @@ using std::cout;
 using std::wcout;
 using std::cin;
 using std::endl;
+
+using std::vector;
+using std::list;
+
 
 void MyEndL()
 {
@@ -64,11 +72,11 @@ CMyOStream mycout;
 
 int main()
 {
-	CList<float> list;
+	CList<float> List;
 
 	for (int i = 0; i < 4; i++)
 	{
-		list.push_back(i);
+		List.push_back(i);
 	}
 
 
@@ -99,6 +107,36 @@ int main()
 	mycout >> a;*/
 	
 	mycout << 10 << L" " << 20 << L" " << L"문자열" << MyEndL;
+
+
+
+	
+	vector<int> vecInt;
+	vecInt.push_back(10);
+	vecInt.push_back(20);
+
+	vecInt[0] = 100;
+	vecInt.at(0); // 백터데이터 인덱스 접근
+	vecInt.data(); // 백터데이터의 시작주소
+	vecInt.size(); // 백터데이터의 자료갯수
+	vecInt.capacity(); // 백터데이터의 허용범위
+
+	for (size_t i = 0; i < vecInt.size(); ++i)
+	{
+		cout << vecInt[i] << endl;
+	}
+
+
+	list<int> listInt;
+	listInt.push_back(10);
+	listInt.push_front(100);
+	listInt.size();
+
+	// iterator 반복자 (inner class)
+	// 클래스 안에 구현된 클래스
+	list<int>::iterator iter = listInt.begin(); // 애는 반복자이지만
+	int iData = *iter; // 마치 포인터 처럼 데이터를 역참조 할 수 있게 만들어 놓았다. (연산자 오버로딩)
+
 
 	return 0;
 }
