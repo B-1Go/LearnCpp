@@ -123,8 +123,15 @@ int main()
 
 	for (size_t i = 0; i < vecInt.size(); ++i)
 	{
-		cout << vecInt[i] << endl;
+		cout << vecInt.at(i) << endl;
 	}
+
+	vector<int>::iterator veciter = vecInt.begin();
+	*veciter = 100;
+	++veciter;
+	vecInt[0] = 100;
+	// vecInt.erase(); // 인자로 iterator를 받는다. 즉, 이터레이터가 가르키는 곳을 지우겠다는 뜻이다.
+
 
 
 	list<int> listInt;
@@ -133,10 +140,16 @@ int main()
 	listInt.size();
 
 	// iterator 반복자 (inner class)
-	// 클래스 안에 구현된 클래스
+	// 클래스 안에 구현된 클래스 -> 자료구조 안에 데이터를 순회 및 수정 등의 기능을 제공함.
 	list<int>::iterator iter = listInt.begin(); // 애는 반복자이지만
 	int iData = *iter; // 마치 포인터 처럼 데이터를 역참조 할 수 있게 만들어 놓았다. (연산자 오버로딩)
+	++iter; // 다음데이터로 감
+	iData = *iter;
 
+	for (iter = listInt.begin(); iter != listInt.end(); ++iter) // end() : 파이썬 인덱스 처럼 마지막 + 1 된 개념이다. -> 따라서 리스트 안에 순회가 다 된다.
+	{ 
+		cout << *iter << endl;
+	}
 
 	return 0;
-}
+};
