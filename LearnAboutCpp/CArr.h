@@ -18,11 +18,42 @@ public:
 	int capacity() { return m_iMaxCount; }
 	T& operator[] (int idx); //레퍼런스
 
+	class iterator; // 전방 선언
+	iterator begin();
+
 public:
 	// 생성자
 	CArr();
 	// 소멸자
 	~CArr();
+
+	class iterator
+	{
+	private:
+		T* m_pData;
+		int m_iIdx;
+
+	public:
+		iterator()
+			: m_pData(nullptr)
+			, m_iIdx(-1)
+		{
+
+		}
+
+		iterator(T* _pData, int _iIdx)
+			: m_pData(_pData)
+			, m_iIdx(_iIdx)
+		{
+
+		}
+
+		~iterator()
+		{
+
+		}
+	};
+
 };
 
 template<typename T>
@@ -86,4 +117,11 @@ template<typename T>
 T& CArr<T>::operator[](int idx)
 {
 	return m_pData[idx];
+}
+
+template<typename T>
+typename CArr<T>::iterator CArr<T>::begin()
+{
+	// 시작을 가리키는 iterator 를 만들어서 반환해줌
+	return iterator(m_pData, 0); // 임시 객체로 만들어지는 순간 반환
 }

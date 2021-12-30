@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "CArr.h"
 #include "CList.h"
 
 #include <vector>
@@ -150,6 +151,20 @@ int main()
 	{ 
 		cout << *iter << endl;
 	}
+
+
+	CArr<int> myvector;
+
+	myvector.push_back(1);
+	myvector.push_back(2);
+	myvector.push_back(3);
+
+	CArr<int>::iterator myiter = myvector.begin();
+
+	// *myiter
+	// ++(전위, 후위), --, ==, !=
+	//
+
 
 	return 0;
 };
