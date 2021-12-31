@@ -20,6 +20,7 @@ public:
 
 	class iterator; // 전방 선언
 	iterator begin();
+	iterator end();
 
 public:
 	// 생성자
@@ -27,22 +28,52 @@ public:
 	// 소멸자
 	~CArr();
 
+	// inner 클래스를 포함하고있는 클래스의 private 멤버에 접근 가능
 	class iterator
 	{
 	private:
-		T* m_pData;
-		int m_iIdx;
+		CArr* m_pArr; // iterator가 가리킬 데이터를 관리하는 가변배열 주소
+		T* m_pData; // 데이터들의 시작 주소
+		int m_iIdx; // 가리키는 데이터의 인덱스
+
+	public:
+		T& operator* ()
+		{
+			// iterator가 알고있는 주소와, 가변배열이 알고 있는 주소가 달라진 경우(공간 확장으로 주소가 달라진 경우)
+			// iterator가 end iterator 인 경우
+			if (m_pArr->m_pData != m_pData || -1 == m_iIdx)
+			{
+				assert(nullptr);
+			}
+
+			return m_pData[m_iIdx];
+		}
+
+		iterator& operator ++()
+		{
+
+			return *this;
+		}
+
+		iterator& operator --()
+		{
+
+			return *this;
+		}
+
 
 	public:
 		iterator()
-			: m_pData(nullptr)
+			: m_pArr(nullptr)
+			, m_pData(nullptr)
 			, m_iIdx(-1)
 		{
 
 		}
 
-		iterator(T* _pData, int _iIdx)
-			: m_pData(_pData)
+		iterator(CArr* _pArr, T* _pData, int _iIdx)
+			: m_pArr(_pArr)
+			, m_pData(_pData)
 			, m_iIdx(_iIdx)
 		{
 
@@ -123,5 +154,19 @@ template<typename T>
 typename CArr<T>::iterator CArr<T>::begin()
 {
 	// 시작을 가리키는 iterator 를 만들어서 반환해줌
-	return iterator(m_pData, 0); // 임시 객체로 만들어지는 순간 반환
+	if (0 == m_iCount)
+	{
+		return iterator(this, m_pData, -1); // 데이터가 없는 경우, begin() == end()
+	}
+	else
+	{
+		return iterator(this, m_pData, 0); // 임시 객체로 만들어지는 순간 반환
+	}
+}
+
+template<typename T>
+typename CArr<T>::iterator CArr<T>::end()
+{
+	// 끝의 다음을 가리키는 iterator 를 만들어서 반환해줌
+	return iterator(this, m_pData, -1);
 }
