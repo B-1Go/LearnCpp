@@ -127,7 +127,7 @@ int main()
 		cout << vecInt.at(i) << endl;
 	}
 
-	vector<int>::iterator veciter = vecInt.begin();
+	vector<int>::iterator veciter = vecInt.begin(); // 벡터(가변배열)는 
 	*veciter = 100;
 	++veciter;
 	vecInt[0] = 100;
@@ -161,9 +161,12 @@ int main()
 
 	CArr<int>::iterator myiter = myvector.begin();
 
-	// *myiter
 	// ++(전위, 후위), --, ==, !=
-	//
+	for ( ; myiter != myvector.end(); ++myiter)
+	{
+		cout << *myiter << endl;
+	}
+
 
 
 	return 0;

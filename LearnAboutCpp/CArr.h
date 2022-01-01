@@ -49,10 +49,37 @@ public:
 			return m_pData[m_iIdx];
 		}
 
+		// 전위
 		iterator& operator ++()
 		{
+			// 2. end iterator 인 경우
+			// 3. iterator가 알고있는 주소와, 가변배열이 알고 있는 주소가 달라진 경우(공간 확장으로 주소가 달라진 경우)
+			if (m_pArr->m_pData != m_pData || -1 == m_iIdx)
+			{
+				assert(nullptr);
+			}
+
+			// 1. iterator가 마지막 데이터를 가리키고 있는 경우
+			// --> end iterator가 된다.
+			if (m_pArr->size() - 1 == m_iIdx)
+			{
+				m_iIdx = -1;
+			}
+			else
+			{
+				++m_iIdx;
+			}
 
 			return *this;
+		}
+
+		// ++ 후위 -> 실제로는 전위처럼 만나자 마자 후위연산이 호출되지만, 마지막에 연산되는 것 처럼 구현하는 것이다.
+		iterator operator ++(int) // 복사본하고, 아무상관없는 int를 넣어주면 컴파일러가 후위연산자로 판단한다.
+		{
+			// fake
+
+
+			return iterator();
 		}
 
 		iterator& operator --()
@@ -60,7 +87,22 @@ public:
 
 			return *this;
 		}
+		
+		// 비교연산자 ==, !=
+		bool operator == (const iterator& _otheriter)
+		{
+			if (m_pData == _otheriter.m_pData && m_iIdx == _otheriter.m_iIdx)
+			{
+				return true;
+			}
 
+			return false;
+		}
+
+		bool operator != (const iterator& _otheriter)
+		{
+			return !(*this == _otheriter);
+		}
 
 	public:
 		iterator()
