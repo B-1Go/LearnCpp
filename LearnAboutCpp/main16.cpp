@@ -35,6 +35,38 @@ using std::vector;
 using std::list;
 
 
+class CTest
+{
+	// 1. 클래스에는 보이지 않지만 자동으로 생성해주는 기능들이 있다.
+	// -> 생성자, 소멸자, 복사생성자, 오퍼레이터 대입연산자
+
+public:
+	int m_i;
+
+public:
+	CTest& operator =(const CTest& _other)
+	{
+		m_i = _other.m_i;
+		return *this;
+	}
+
+public:
+	CTest()
+	{
+
+	}
+	CTest(const CTest& _other)
+		: m_i(_other.m_i)
+	{
+		// 이 복사생성자도 알아서 컴파일러가 만들어준다.
+		// 그러나! 인자가 있는 생성자를 만들게 되면 기본 생성자는 컴파일러가 만들어주지 않는다.
+		// 이유는 개발자가 무조건 인자를 가진 생성자로 시작하게 하고싶은데 자꾸 컴파일러가 기본 생성자를 만들게 되면 설계 의도와 맞지 않기때문에
+		// 생성자를 만들게 되면 기본 생성자를 컴파일러는 만들어 주지 않는다.
+	}
+};
+
+
+
 void MyEndL()
 {
 	wprintf(L"\n");
@@ -127,7 +159,7 @@ int main()
 		cout << vecInt.at(i) << endl;
 	}
 
-	vector<int>::iterator veciter = vecInt.begin(); // 벡터(가변배열)는 
+	vector<int>::iterator veciter = vecInt.begin(); // 벡터(가변배열)는 iterator가 가르키던 메모리주소가 재할당과 같은 메모리 주소 변화가 일어나면 문제로 보고있다.
 	*veciter = 100;
 	++veciter;
 	vecInt[0] = 100;
@@ -155,9 +187,9 @@ int main()
 
 	CArr<int> myvector;
 
-	myvector.push_back(1);
-	myvector.push_back(2);
-	myvector.push_back(3);
+	myvector.push_back(10);
+	myvector.push_back(20);
+	myvector.push_back(30);
 
 	CArr<int>::iterator myiter = myvector.begin();
 
@@ -167,6 +199,19 @@ int main()
 		cout << *myiter << endl;
 	}
 
+	myiter = myvector.begin();
+
+	int iData = *(++myiter);
+	int iData = *(myiter++);
+	
+	
+	// 시험에 단골로 나오는 개념!!!
+	CTest t1;
+	t1.m_i = 100;
+
+	CTest t2(t1); // 복사생성자
+
+	CTest t3 = t2; // 이건 대입연산자 처럼 보이지만 컴파일러가 알아서 CTest t3(t2) 복사생성자로 바꾼다.
 
 
 	return 0;

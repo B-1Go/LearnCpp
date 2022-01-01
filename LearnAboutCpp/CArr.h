@@ -76,12 +76,14 @@ public:
 		// ++ 후위 -> 실제로는 전위처럼 만나자 마자 후위연산이 호출되지만, 마지막에 연산되는 것 처럼 구현하는 것이다.
 		iterator operator ++(int) // 복사본하고, 아무상관없는 int를 넣어주면 컴파일러가 후위연산자로 판단한다.
 		{
-			// fake
+			iterator copy_iter = *this; // 복사생성자로 알아서 컴파일러에 의해서 처리됨
 
+			+= (*this);
 
-			return iterator();
+			return copy_iter;
 		}
 
+		// -- 전위, 후위 직접 구현해보자
 		iterator& operator --()
 		{
 
