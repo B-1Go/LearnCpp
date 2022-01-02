@@ -21,6 +21,7 @@ public:
 	class iterator; // 전방 선언
 	iterator begin();
 	iterator end();
+	iterator erase(const iterator& _iter);
 
 public:
 	// 생성자
@@ -78,7 +79,7 @@ public:
 		{
 			iterator copy_iter = *this; // 복사생성자로 알아서 컴파일러에 의해서 처리됨
 
-			+= (*this);
+			++(*this);
 
 			return copy_iter;
 		}
@@ -87,7 +88,33 @@ public:
 		iterator& operator --()
 		{
 
+			// 2. end iterator 인 경우 -> 데이터가 1도 없다는 뜻이다
+			// 3. iterator가 알고있는 주소와, 가변배열이 알고 있는 주소가 달라진 경우(공간 확장으로 주소가 달라진 경우)
+			if (m_pArr->m_pData != m_pData || -1 == m_iIdx)
+			{
+				assert(nullptr);
+			}
+
+			// 1. iterator가 첫번째 데이터를 가리키고 있는 경우
+			if (0 == m_iIdx)
+			{
+				assert(nullptr);
+			}
+			else
+			{
+				--m_iIdx;
+			}
+
 			return *this;
+		}
+
+		iterator operator --(int)
+		{
+			iterator copy_iter = *this; // 복사생성자로 알아서 컴파일러에 의해서 처리됨
+
+			--(*this);
+
+			return copy_iter;
 		}
 		
 		// 비교연산자 ==, !=
@@ -127,6 +154,8 @@ public:
 		{
 
 		}
+
+		friend class CArr; // frined 선언은 요청에 으로 보면된다. 즉 CArr이 -> iterator(inner class)의 private 멤버를 접근하고 싶기 때문에 선언 위치는 inner class이다.
 	};
 
 };
@@ -213,4 +242,19 @@ typename CArr<T>::iterator CArr<T>::end()
 {
 	// 끝의 다음을 가리키는 iterator 를 만들어서 반환해줌
 	return iterator(this, m_pData, -1);
+}
+
+template<typename T>
+typename CArr<T>::iterator CArr<T>::erase(const iterator& _iter)
+{
+	// inner class는 상위 class의 private 멤버에 접근 할 수있지만, CArr class는 inner class의 private 멤버에 접근 할 수가 없다. 이 문제를 해결하기 위해 class 끼리 친구 선언이 가능하다.
+	
+	// iterator가 다른 Arr 쪽 요소를 가리키는 경우
+	// iterator가 end iterator 인 경우
+	if (this != _iter.m_pArr || end() == _iter)
+	{
+		assert(nullptr);
+	}
+
+	return iterator();
 }

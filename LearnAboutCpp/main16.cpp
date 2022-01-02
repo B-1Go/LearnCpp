@@ -200,18 +200,34 @@ int main()
 	}
 
 	myiter = myvector.begin();
+	// --myiter;
+	// myiter--;
 
-	int iData = *(++myiter);
-	int iData = *(myiter++);
+	// int iData = *(++myiter);
+	// int iData = *(myiter++);
 	
 	
 	// 시험에 단골로 나오는 개념!!!
 	CTest t1;
 	t1.m_i = 100;
 
-	CTest t2(t1); // 복사생성자
+	CTest t2(t1); // 복사생성자 호출
 
 	CTest t3 = t2; // 이건 대입연산자 처럼 보이지만 컴파일러가 알아서 CTest t3(t2) 복사생성자로 바꾼다.
+
+
+	// vector::erase
+	vector<int> vecInt2;
+
+	vecInt2.push_back(100);
+	vecInt2.push_back(200);
+	vecInt2.push_back(300);
+	vecInt2.push_back(400);
+
+	vector<int>::iterator veciter2 = vecInt2.begin();
+	veciter2 = vecInt2.erase(veciter2); // erase의 반환 타입은 itrator이므로, 단순히 지우기만 하면 안되고 veciter가 받아야한다.
+	int i = *veciter2;
+
 
 
 	return 0;
