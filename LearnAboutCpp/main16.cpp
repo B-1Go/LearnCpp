@@ -229,6 +229,39 @@ int main()
 	int i = *veciter2;
 
 
+	// 실제 리스트의 insert 동작 방식 보기 위해서 만듬
+	list<int> intlist;
 
-	return 0;
+	intlist.push_back(100);
+	intlist.push_back(100);
+
+	list<int>::iterator it = intlist.begin();
+	it = intlist.insert(++it, 200); // iterator 로 리턴되는 이유는 삽입한 데이터를 지칭하기 위함이며, 가르키는 대상의 앞쪽으로 들어간다 (여러가지 종류가 있음)
+
+
+	// =============
+	// list iterator
+	// =============
+	CList<int> mylist;
+
+	mylist.push_back(100);
+	mylist.push_back(200);
+	mylist.push_back(300);
+
+	CList<int>::iterator listiter = mylist.begin();
+	int l = *listiter;
+
+	*listiter = 150;
+
+	cout << "==================" << endl;
+	cout << "list iterator test" << endl;
+	cout << "==================" << endl;
+	for (listiter = mylist.begin(); listiter != mylist.end(); ++listiter)
+	{
+		cout << *listiter << endl;
+	}
+
+
+
+ 	return 0;
 };
