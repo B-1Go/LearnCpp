@@ -21,7 +21,7 @@ public:
 	class iterator; // 전방 선언
 	iterator begin();
 	iterator end();
-	iterator erase(const iterator& _iter);
+	iterator erase(iterator& _iter);
 
 public:
 	// 생성자
@@ -36,13 +36,14 @@ public:
 		CArr* m_pArr; // iterator가 가리킬 데이터를 관리하는 가변배열 주소
 		T* m_pData; // 데이터들의 시작 주소
 		int m_iIdx; // 가리키는 데이터의 인덱스
+		bool m_bValid; // iterator 유효성 체크
 
 	public:
 		T& operator* ()
 		{
 			// iterator가 알고있는 주소와, 가변배열이 알고 있는 주소가 달라진 경우(공간 확장으로 주소가 달라진 경우)
 			// iterator가 end iterator 인 경우
-			if (m_pArr->m_pData != m_pData || -1 == m_iIdx)
+			if (m_pArr->m_pData != m_pData || -1 == m_iIdx || !m_bValid)
 			{
 				assert(nullptr);
 			}
@@ -138,6 +139,7 @@ public:
 			: m_pArr(nullptr)
 			, m_pData(nullptr)
 			, m_iIdx(-1)
+			, m_bValid(false)
 		{
 
 		}
@@ -146,8 +148,12 @@ public:
 			: m_pArr(_pArr)
 			, m_pData(_pData)
 			, m_iIdx(_iIdx)
+			, m_bValid(false)
 		{
-
+			if (nullptr != _pArr && 0 <= _iIdx)
+			{
+				m_bValid = true;
+			}
 		}
 
 		~iterator()
@@ -245,16 +251,28 @@ typename CArr<T>::iterator CArr<T>::end()
 }
 
 template<typename T>
-typename CArr<T>::iterator CArr<T>::erase(const iterator& _iter)
+typename CArr<T>::iterator CArr<T>::erase(iterator& _iter)
 {
 	// inner class는 상위 class의 private 멤버에 접근 할 수있지만, CArr class는 inner class의 private 멤버에 접근 할 수가 없다. 이 문제를 해결하기 위해 class 끼리 친구 선언이 가능하다.
 	
 	// iterator가 다른 Arr 쪽 요소를 가리키는 경우
 	// iterator가 end iterator 인 경우
-	if (this != _iter.m_pArr || end() == _iter)
+	if (this != _iter.m_pArr || end() == _iter || m_iCount <= _iter.m_iIdx)
 	{
 		assert(nullptr);
 	}
 
-	return iterator();
+	// iterator 가 가르키는 데이터를 배열 내에서 제거한다.
+	int iLoopCount = m_iCount - (_iter.m_iIdx + 1);
+	for (int i = 0; i < iLoopCount; ++i)
+	{
+		m_pData[i + _iter.m_iIdx] = m_pData[i + _iter.m_iIdx + 1];
+	}
+
+	_iter.m_bValid = false;
+
+	// 카운트 감소
+	--m_iCount;
+
+	return iterator(this, this->m_pData, _iter.m_iIdx);
 }

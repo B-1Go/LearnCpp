@@ -203,6 +203,13 @@ typename CList<T>::iterator CList<T>::end()
 }
 
 template<typename T>
+typename CList<T>::iterator CList<T>::erase(iterator& _iter)
+{
+
+	return iterator();
+}
+
+template<typename T>
 typename CList<T>::iterator CList<T>::insert(const iterator& _iter, const T& _data)
 {
 	if (end() == _iter)
@@ -236,7 +243,7 @@ typename CList<T>::iterator CList<T>::insert(const iterator& _iter, const T& _da
 
 	++m_iCount;
 
-	return iterator();
+	return iterator(this, pNode);
 }
 
 template<typename T>

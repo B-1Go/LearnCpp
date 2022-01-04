@@ -192,9 +192,11 @@ int main()
 	myvector.push_back(30);
 
 	CArr<int>::iterator myiter = myvector.begin();
+	myiter = myvector.erase(myiter);
+	int k = *myiter;
 
 	// ++(전위, 후위), --, ==, !=
-	for ( ; myiter != myvector.end(); ++myiter)
+	for (myiter = myvector.begin(); myiter != myvector.end(); ++myiter)
 	{
 		cout << *myiter << endl;
 	}
@@ -252,6 +254,10 @@ int main()
 	int l = *listiter;
 
 	*listiter = 150;
+
+	++listiter;
+
+	listiter = mylist.insert(listiter, 175);
 
 	cout << "==================" << endl;
 	cout << "list iterator test" << endl;

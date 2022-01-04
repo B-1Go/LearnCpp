@@ -162,6 +162,9 @@
     <ClCompile Include="func.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main16.cpp" />
+    <ClCompile Include="main17.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="mainf.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
