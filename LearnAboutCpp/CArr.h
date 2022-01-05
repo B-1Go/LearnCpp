@@ -22,6 +22,8 @@ public:
 	iterator begin();
 	iterator end();
 	iterator erase(iterator& _iter);
+	
+	void clear() { m_iCount = 0; }
 
 public:
 	// »ı¼ºÀÚ

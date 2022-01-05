@@ -205,8 +205,49 @@ typename CList<T>::iterator CList<T>::end()
 template<typename T>
 typename CList<T>::iterator CList<T>::erase(iterator& _iter)
 {
+	// iterator가 다른 List 쪽 요소를 가리키는 경우
+	// iterator가 end iterator 인 경우
+	if (this != _iter.m_pList || end() == _iter)
+	{
+		assert(nullptr);
+	}
 
-	return iterator();
+	// 헤더노드 일경우 -> _iter.m_pNode->pPrev 가 nullptr일 경우 헤더라고 할 수 있다.
+	if (nullptr == _iter.m_pNode->pPrev)
+	{
+		m_pHead = _iter.m_pNode->pNext;
+		_iter.m_pNode->pPrev = nullptr;
+		free(_iter.m_pNode);
+	}
+	else if(nullptr == _iter.m_pNode->pNext)
+	{
+		// _iter 가 마지막 노드일 경우 m_pTail 수정해야됨!
+		m_pTail = _iter.m_pNode->pPrev;
+
+		// 데이터 노드 옮겨주기
+		_iter.m_pNode->pPrev->pNext = nullptr;
+	}
+	else
+	{
+		// 데이터 노드 옮겨주기
+		_iter.m_pNode->pNext->pPrev = _iter.m_pNode->pPrev;
+		_iter.m_pNode->pPrev->pNext = _iter.m_pNode->pNext;
+
+		// 데이터 실제로 지우기
+		tListNode<T>* templist = _iter.m_pNode;
+		free(_iter.m_pNode);
+
+		// 뒤에 있는 데이터를 받기
+		_iter.m_pNode = templist->pNext;
+	}
+
+	// 카운터 감소
+	--m_iCount;
+
+	// 리턴 받지 않으면 사용 못하게
+	_iter.m_bValid = false;
+
+	return iterator(this, _iter.m_pNode);
 }
 
 template<typename T>

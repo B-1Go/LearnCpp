@@ -230,6 +230,36 @@ int main()
 	veciter2 = vecInt2.erase(veciter2); // erase의 반환 타입은 itrator이므로, 단순히 지우기만 하면 안되고 veciter가 받아야한다.
 	int i = *veciter2;
 
+	vecInt.clear();
+
+	// 1 ~ 10을 벡터에 입력
+	for (int i = 0; i < 11; ++i)
+	{
+		vecInt.push_back(i + 1);
+	}
+
+	// 아래와 같은 문제도 시험에 잘 나온다. iterator 기초사항
+	// 짝수만 제거
+	veciter = vecInt.begin();
+	for (; veciter != vecInt.end(); )
+	{
+		// 1 ~ 5 숫자 제거
+		if (0 == *veciter % 2)
+		{
+			// 제거
+			veciter = vecInt.erase(veciter);
+		}
+		else
+		{
+			++veciter;
+		}
+	}
+
+	for (int i = 0; i < vecInt.size(); ++i)
+	{
+		cout << vecInt[i] << endl;
+	}
+
 
 	// 실제 리스트의 insert 동작 방식 보기 위해서 만듬
 	list<int> intlist;
@@ -258,6 +288,13 @@ int main()
 	++listiter;
 
 	listiter = mylist.insert(listiter, 175);
+
+	// erase 테스트 -> 성공
+	listiter = mylist.begin();
+	++listiter;
+	++listiter;
+	++listiter;
+	listiter = mylist.erase(listiter);
 
 	cout << "==================" << endl;
 	cout << "list iterator test" << endl;
