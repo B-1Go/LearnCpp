@@ -13,17 +13,23 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Arr">
-      <UniqueIdentifier>{8bbe745b-73fa-49e8-ad0d-7c672e547919}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Arrf">
-      <UniqueIdentifier>{727f6f51-ba20-4627-98d7-7a625dcc4782}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="LinkedList">
-      <UniqueIdentifier>{85faef4b-5727-46b9-a998-5bc3bbfa829b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="StructandClass">
       <UniqueIdentifier>{48f3096b-cd85-4602-a8d1-c911628f298b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructure">
+      <UniqueIdentifier>{d7f8f392-c65b-4f90-9262-c8aa258d5ae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructure\Arr">
+      <UniqueIdentifier>{8bbe745b-73fa-49e8-ad0d-7c672e547919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructure\Arrf">
+      <UniqueIdentifier>{727f6f51-ba20-4627-98d7-7a625dcc4782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructure\LinkedList">
+      <UniqueIdentifier>{85faef4b-5727-46b9-a998-5bc3bbfa829b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructure\BST">
+      <UniqueIdentifier>{537f2ace-2273-4696-b5d4-a79f56d131e7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -45,16 +51,16 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Arr.h">
-      <Filter>Arr</Filter>
+      <Filter>DataStructure\Arr</Filter>
     </ClInclude>
     <ClInclude Include="Arrf.h">
-      <Filter>Arrf</Filter>
+      <Filter>DataStructure\Arrf</Filter>
     </ClInclude>
     <ClInclude Include="LinkedList.h">
-      <Filter>LinkedList</Filter>
+      <Filter>DataStructure\LinkedList</Filter>
     </ClInclude>
     <ClInclude Include="CArr.h">
-      <Filter>Arr</Filter>
+      <Filter>DataStructure\Arr</Filter>
     </ClInclude>
     <ClInclude Include="Cstyle.h">
       <Filter>StructandClass</Filter>
@@ -63,7 +69,7 @@
       <Filter>StructandClass</Filter>
     </ClInclude>
     <ClInclude Include="CList.h">
-      <Filter>LinkedList</Filter>
+      <Filter>DataStructure\LinkedList</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -74,16 +80,16 @@
       <Filter>헤더 파일</Filter>
     </ClCompile>
     <ClCompile Include="Arr.cpp">
-      <Filter>Arr</Filter>
+      <Filter>DataStructure\Arr</Filter>
     </ClCompile>
     <ClCompile Include="Arrf.cpp">
-      <Filter>Arrf</Filter>
+      <Filter>DataStructure\Arrf</Filter>
     </ClCompile>
     <ClCompile Include="mainf.cpp">
-      <Filter>Arrf</Filter>
+      <Filter>DataStructure\Arrf</Filter>
     </ClCompile>
     <ClCompile Include="LinkedList.cpp">
-      <Filter>LinkedList</Filter>
+      <Filter>DataStructure\LinkedList</Filter>
     </ClCompile>
     <ClCompile Include="StructandClass.cpp">
       <Filter>StructandClass</Filter>
@@ -93,9 +99,6 @@
     </ClCompile>
     <ClCompile Include="Cppstyle.cpp">
       <Filter>StructandClass</Filter>
-    </ClCompile>
-    <ClCompile Include="main16.cpp">
-      <Filter>헤더 파일</Filter>
     </ClCompile>
     <ClCompile Include="main17.cpp">
       <Filter>헤더 파일</Filter>
