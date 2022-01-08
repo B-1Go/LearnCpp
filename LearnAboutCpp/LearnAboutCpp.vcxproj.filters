@@ -71,6 +71,9 @@
     <ClInclude Include="CList.h">
       <Filter>DataStructure\LinkedList</Filter>
     </ClInclude>
+    <ClInclude Include="CBST.h">
+      <Filter>DataStructure\BST</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="func.cpp">

@@ -5,6 +5,8 @@
 
 #include <string>
 
+#include "CBST.h"
+
 using std::wcout;
 using std::endl;
 
@@ -180,6 +182,21 @@ int main()
 	map<MyClass, tStdInfo> mapTestInfo;
 	MyClass a;
 	mapTestInfo.insert(make_pair(a, info)); // Error	C2676	binary '<': 'const _Ty' does not define this operator or a conversion to a type acceptable to the predefined operator
+
+
+	CBST<int, int> bstint;
+
+	tPair<int, int> pair;
+	
+	pair.first = 100;
+	bstint.insert(pair);
+
+	pair.first = 150;
+	bstint.insert(pair);
+	
+	pair.first = 50;
+	bstint.insert(pair);
+
 
 	return 0;
 }
