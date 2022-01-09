@@ -103,7 +103,7 @@
     <ClCompile Include="Cppstyle.cpp">
       <Filter>StructandClass</Filter>
     </ClCompile>
-    <ClCompile Include="main17.cpp">
+    <ClCompile Include="main18.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
   </ItemGroup>

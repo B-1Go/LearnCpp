@@ -1,5 +1,12 @@
 #pragma once
 
+enum class NODE_TYPE
+{
+	PARENT, // 0
+	LCHILD, // 1
+	RCHILD, // 2
+	END,	// 3
+};
 
 
 template <typename T1, typename T2>
@@ -9,15 +16,27 @@ struct tPair
 	T2 second;
 };
 
+template <typename T1, typename T2>
+tPair<T1, T2> make_bstpair(const T1& _first, const T2& _second)
+{
+	return tPair<T1, T2>{_first, _second};
+}
 
 template <typename T1, typename T2>
 struct tBSTNode
 {
 	tPair<T1, T2> pair;
+	tBSTNode* arrNode[(int)NODE_TYPE::END];
 
-	tBSTNode* pParent;
-	tBSTNode* pLeftChild;
-	tBSTNode* pRightChild;
+	tBSTNode()
+		: pair()
+		, arrNode{}
+	{}
+
+	tBSTNode(const tPair<T1, T2> _pair, tBSTNode* _pParent, tBSTNode* _pLChild, tBSTNode* _pRChild)
+		: pair(_pair)
+		, arrNode{ _pParent, _pLChild, _pRChild }
+	{}
 };
 
 
@@ -36,17 +55,31 @@ public:
 		: m_pRoot(nullptr)
 		, m_iCount(0)
 	{}
+
+	// iterator
+	class iterator
+	{
+	private:
+		CBST<T1, T2>* m_pBST;
+		tBSTNode<T1, T2>* m_pNode; // null 인 경우 end iterator
+
+	public:
+		iterator()
+			: m_pBST(nullptr)
+			, m_pNode(nullptr)
+		{}
+
+		iterator(CBST<T1, T2>* _pBST, tBSTNode<T1, T2>* _pNode)
+			: m_pBST(_pBst)
+			, m_pNode(_pNode)
+		{}
+	};
 };
 
 template<typename T1, typename T2>
 inline bool CBST<T1, T2>::insert(const tPair<T1, T2>& _pair)
 {
-	tBSTNode<T1, T2>* pNewNode = new tBSTNode<T1, T2>();
-	pNewNode->pair = _pair;
-	pNewNode->pParent = nullptr;
-	pNewNode->pLeftChild = nullptr;
-	pNewNode->pRightChild = nullptr;
-
+	tBSTNode<T1, T2>* pNewNode = new tBSTNode<T1, T2>(_pair, nullptr, nullptr, nullptr);
 
 	// 첫번째 데이터 라면
 	if (nullptr == m_pRoot)
@@ -56,38 +89,32 @@ inline bool CBST<T1, T2>::insert(const tPair<T1, T2>& _pair)
 	else
 	{
 		tBSTNode<T1, T2>* pNode = m_pRoot;
+		NODE_TYPE node_type = NODE_TYPE::END;
 
 		while (true)
 		{
 			if (pNode->pair.first < pNewNode->pair.first)
 			{
-				if (nullptr == pNode->pRightChild)
-				{
-					pNode->pRightChild = pNewNode;
-					pNewNode->pParent = pNode;
-					break;
-				}
-				else
-				{
-					pNode = pNode->pRightChild;
-				}
+				node_type = NODE_TYPE::RCHILD;
 			}
 			else if (pNode->pair.first > pNewNode->pair.first)
 			{
-				if (nullptr == pNode->pLeftChild)
-				{
-					pNode->pLeftChild = pNewNode;
-					pNewNode->pParent = pNode;
-					break;
-				}
-				else
-				{
-					pNode = pNode->pLeftChild;
-				}
+				node_type = NODE_TYPE::LCHILD;
 			}
 			else
 			{
 				return false;
+			}
+
+			if (nullptr == pNode->arrNode[(int)node_type])
+			{
+				pNode->arrNode[(int)node_type] = pNewNode;
+				pNewNode->arrNode[(int)NODE_TYPE::PARENT] = pNode;
+				break;
+			}
+			else
+			{
+				pNode = pNode->arrNode[(int)node_type];
 			}
 		}
 	}
