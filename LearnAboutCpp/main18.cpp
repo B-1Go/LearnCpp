@@ -146,31 +146,40 @@ int main()
 	Iter = bstint.find(150);
 
 
-	map<int, int> mapInt;
-	mapInt.insert(make_pair(100, 100));
+	//map<int, int> mapInt;
+	//mapInt.insert(make_pair(100, 100));
 
-	map<int, int>::iterator mapiter = mapInt.find(100);
-	if (mapiter == mapInt.end())
-	{
-		wcout << "찾을 수 없음" << endl;
-	}
+	//map<int, int>::iterator mapiter = mapInt.find(100);
+	//if (mapiter == mapInt.end())
+	//{
+	//	wcout << "찾을 수 없음" << endl;
+	//}
 
-	(*Iter).first;
-	Iter->first;
+	//(*Iter).first;
+	//Iter->first;
 
-	(*Iter).second;
-	Iter->second;
+	//(*Iter).second;
+	//Iter->second;
 
-	tPair<int, int> pair;
+	//tPair<int, int> pair;
 
-	tPair<int, int>* pPair = &pair;
-	pPair->first;
-	pPair->second;
+	//tPair<int, int>* pPair = &pair;
+	//pPair->first;
+	//pPair->second;
 
-	for (Iter = bstint.begin(); Iter != bstint.end(); ++Iter)
-	{
-		wcout << Iter->first << Iter->second << endl;
-	}
+	//for (Iter = bstint.begin(); Iter != bstint.end(); ++Iter)
+	//{
+	//	wcout << Iter->first << Iter->second << endl;
+	//}
+
+	bstint.insert(make_bstpair(25, 0));
+	bstint.insert(make_bstpair(75, 0));
+	bstint.insert(make_bstpair(125, 0));
+	bstint.insert(make_bstpair(175, 0));
+
+	Iter = bstint.find(25);
+
+	Iter = bstint.erase(Iter);
 
 	return 0;
 }

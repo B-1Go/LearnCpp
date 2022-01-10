@@ -57,6 +57,24 @@ struct tBSTNode
 		return false;
 	}
 
+	bool IsLeaf()
+	{
+		if (nullptr == arrNode[(int)NODE_TYPE::LCHILD] && nullptr == arrNode[(int)NODE_TYPE::RCHILD])
+		{
+			return true;
+		}
+		return false;
+	}
+
+	bool IsFull()
+	{
+		if (arrNode[(int)NODE_TYPE::LCHILD] && arrNode[(int)NODE_TYPE::RCHILD])
+		{
+			return true;
+		}
+		return false;
+	}
+
 	tBSTNode()
 		: pair()
 		, arrNode{}
@@ -78,8 +96,8 @@ private:
 
 public:
 	bool insert(const tPair<T1, T2>& _pair);
-	tBSTNode<T1, T2>* GetInOrderSuccessor(tBSTNode<T1, T2> _pNdoe);
-	tBSTNode<T1, T2>* GetInOrderPredecessor(tBSTNode<T1, T2> _pNdoe);
+	tBSTNode<T1, T2>* GetInOrderSuccessor(tBSTNode<T1, T2>* _pNdoe);
+	tBSTNode<T1, T2>* GetInOrderPredecessor(tBSTNode<T1, T2>* _pNdoe);
 
 
 	class iterator;
@@ -87,6 +105,10 @@ public:
 	iterator begin();
 	iterator end();
 	iterator find(const T1& _find);
+	iterator erase(const iterator& _iter);
+
+private:
+	tBSTNode<T1, T2>* DeleteNode(tBSTNode<T1, T2>* _pTargetNode);
 
 public:
 	CBST()
@@ -134,7 +156,7 @@ public:
 
 		iterator& operator ++()
 		{
-			// m_pNode = m_pBST->Get
+			m_pNode = m_pBST->GetInOrderSuccessor(m_pNode);
 			return *this;
 		}
 
@@ -148,6 +170,8 @@ public:
 			: m_pBST(_pBST)
 			, m_pNode(_pNode)
 		{}
+
+		friend class CBST<T1, T2>;
 	};
 };
 
@@ -201,7 +225,7 @@ inline bool CBST<T1, T2>::insert(const tPair<T1, T2>& _pair)
 }
 
 template<typename T1, typename T2>
-inline tBSTNode<T1, T2>* CBST<T1, T2>::GetInOrderSuccessor(tBSTNode<T1, T2> _pNode) // 중위 후속자
+inline tBSTNode<T1, T2>* CBST<T1, T2>::GetInOrderSuccessor(tBSTNode<T1, T2>* _pNode) // 중위 후속자
 {
 	tBSTNode<T1, T2>* pSuccessor = nullptr;
 
@@ -252,7 +276,7 @@ inline tBSTNode<T1, T2>* CBST<T1, T2>::GetInOrderSuccessor(tBSTNode<T1, T2> _pNo
 }
 
 template<typename T1, typename T2>
-inline tBSTNode<T1, T2>* CBST<T1, T2>::GetInOrderPredecessor(tBSTNode<T1, T2> _pNdoe) // 중위 선행자는 정확하게 중위 후속자라 대칭 -> 스스로 구현해보기!
+inline tBSTNode<T1, T2>* CBST<T1, T2>::GetInOrderPredecessor(tBSTNode<T1, T2>* _pNdoe) // 중위 선행자는 정확하게 중위 후속자라 대칭 -> 스스로 구현해보기!
 {
 	// 
 
@@ -311,4 +335,65 @@ inline typename CBST<T1, T2>::iterator CBST<T1, T2>::find(const T1& _find)
 		}
 	}
 	return iterator(this, pNode);
+}
+
+template<typename T1, typename T2>
+inline typename CBST<T1, T2>::iterator CBST<T1, T2>::erase(const iterator& _iter)
+{
+	if (this == _iter.m_pBST)
+	{
+		assert(nullptr);
+	}
+
+	tBSTNode<T1, T2>* pSuccessor = DeleteNode(_iter.m_pNode);
+
+	return iterator(this, pSuccessor);
+}
+
+template<typename T1, typename T2>
+inline tBSTNode<T1, T2>* CBST<T1, T2>::DeleteNode(tBSTNode<T1, T2>* _pTargetNode)
+{
+	tBSTNode<T1, T2>* pSuccessor = nullptr;
+
+	// 1. 자식이 하나도 없는 경우
+	if (_pTargetNode->IsLeaf())
+	{
+		// 삭제시킬 노드의 후속자 노드를 찾아둔다.
+		pSuccessor = GetInOrderPredecessor(_pTargetNode);
+
+		// 삭제할 노드가 루트였다(자식이 없고 루트 ==> BST 안에 데이터가 1개밖에 없었다)
+		if (_pTargetNode == m_pRoot)
+		{
+			m_pRoot = nullptr;
+		}
+		else
+		{
+			// 부모노드로 접근, 삭제될 노드인 자식을 가리키는 포인터를 nullptr 로 만든다.
+			if (_pTargetNode->IsLeftChild())
+			{
+				_pTargetNode->arrNode[(int)NODE_TYPE::PARENT]->arrNode[(int)NODE_TYPE::LCHILD] = nullptr;
+			}
+			else
+			{
+				_pTargetNode->arrNode[(int)NODE_TYPE::PARENT]->arrNode[(int)NODE_TYPE::RCHILD] = nullptr;
+			}
+		}
+
+		delete _pTargetNode;
+	}
+	// 2. 자식이 2개인 경우
+	else if (_pTargetNode->IsLeaf())
+	{
+
+	}
+	// 3. 자식이 1개 인 경우
+	else
+	{
+
+	}
+
+	// 데이터 갯수 맞춤 -> 카운트 감소
+	--m_iCount;
+	
+	return pSuccessor;
 }
