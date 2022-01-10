@@ -142,6 +142,9 @@ int main()
 	bstint.insert(make_bstpair(150, 0));
 	bstint.insert(make_bstpair(50, 0));
 
+	CBST<int, int>::iterator Iter = bstint.begin();
+	Iter = bstint.find(150);
+
 
 	map<int, int> mapInt;
 	mapInt.insert(make_pair(100, 100));
@@ -150,6 +153,23 @@ int main()
 	if (mapiter == mapInt.end())
 	{
 		wcout << "찾을 수 없음" << endl;
+	}
+
+	(*Iter).first;
+	Iter->first;
+
+	(*Iter).second;
+	Iter->second;
+
+	tPair<int, int> pair;
+
+	tPair<int, int>* pPair = &pair;
+	pPair->first;
+	pPair->second;
+
+	for (Iter = bstint.begin(); Iter != bstint.end(); ++Iter)
+	{
+		wcout << Iter->first << Iter->second << endl;
 	}
 
 	return 0;
