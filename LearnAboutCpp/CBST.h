@@ -234,9 +234,9 @@ inline tBSTNode<T1, T2>* CBST<T1, T2>::GetInOrderSuccessor(tBSTNode<T1, T2>* _pN
 	{
 		pSuccessor = _pNode->arrNode[(int)NODE_TYPE::RCHILD];
 
-		while (pSuccessor->arrNode[(int)NODE_TYPE::RCHILD])
+		while (pSuccessor->arrNode[(int)NODE_TYPE::LCHILD])
 		{
-			pSuccessor = pSuccessor->arrNode[(int)NODE_TYPE::RCHILD];
+			pSuccessor = pSuccessor->arrNode[(int)NODE_TYPE::LCHILD];
 
 		}
 
@@ -340,7 +340,7 @@ inline typename CBST<T1, T2>::iterator CBST<T1, T2>::find(const T1& _find)
 template<typename T1, typename T2>
 inline typename CBST<T1, T2>::iterator CBST<T1, T2>::erase(const iterator& _iter)
 {
-	if (this == _iter.m_pBST)
+	if (this != _iter.m_pBST)
 	{
 		assert(nullptr);
 	}
@@ -353,14 +353,12 @@ inline typename CBST<T1, T2>::iterator CBST<T1, T2>::erase(const iterator& _iter
 template<typename T1, typename T2>
 inline tBSTNode<T1, T2>* CBST<T1, T2>::DeleteNode(tBSTNode<T1, T2>* _pTargetNode)
 {
-	tBSTNode<T1, T2>* pSuccessor = nullptr;
+	// 삭제시킬 노드의 후속자 노드를 찾아둔다.
+	tBSTNode<T1, T2>* pSuccessor = GetInOrderSuccessor(_pTargetNode);
 
 	// 1. 자식이 하나도 없는 경우
 	if (_pTargetNode->IsLeaf())
 	{
-		// 삭제시킬 노드의 후속자 노드를 찾아둔다.
-		pSuccessor = GetInOrderPredecessor(_pTargetNode);
-
 		// 삭제할 노드가 루트였다(자식이 없고 루트 ==> BST 안에 데이터가 1개밖에 없었다)
 		if (_pTargetNode == m_pRoot)
 		{
@@ -380,20 +378,58 @@ inline tBSTNode<T1, T2>* CBST<T1, T2>::DeleteNode(tBSTNode<T1, T2>* _pTargetNode
 		}
 
 		delete _pTargetNode;
+
+		// 데이터 갯수 맞춤 -> 카운트 감소
+		--m_iCount;
 	}
 	// 2. 자식이 2개인 경우
-	else if (_pTargetNode->IsLeaf())
+	else if (_pTargetNode->IsFull())
 	{
+		// 삭제 될 자리에 중위 후속자의 값을 복사 시킨다.
+		_pTargetNode->pair = pSuccessor->pair;
 
+		// 중위 후속자 노드를 삭제한다.
+		DeleteNode(pSuccessor);
+
+		// 삭제할 노드가 곧 중위 후속자가 되었다.
+		pSuccessor = _pTargetNode;
 	}
 	// 3. 자식이 1개 인 경우
 	else
 	{
+		NODE_TYPE eChildType = NODE_TYPE::LCHILD;
+		if (_pTargetNode->arrNode[(int)NODE_TYPE::RCHILD])
+		{
+			eChildType = NODE_TYPE::RCHILD;
+		}
 
+		// 삭제할 노드가 루트 였다.
+		if (_pTargetNode == m_pRoot)
+		{
+			// 자식
+			m_pRoot = _pTargetNode->arrNode[(int)eChildType];
+			_pTargetNode->arrNode[(int)eChildType]->arrNode[(int)NODE_TYPE::PARENT] = nullptr;
+		}
+		else
+		{
+			// 삭제될 노드의 부모와, 삭제될 노드의 자식을 연결 해준다.
+			if (_pTargetNode->IsLeftChild())
+			{
+				_pTargetNode->arrNode[(int)NODE_TYPE::PARENT]->arrNode[(int)NODE_TYPE::LCHILD] = _pTargetNode->arrNode[(int)eChildType];
+			}
+			else
+			{
+				_pTargetNode->arrNode[(int)NODE_TYPE::PARENT]->arrNode[(int)NODE_TYPE::RCHILD] = _pTargetNode->arrNode[(int)eChildType];
+			}
+
+			_pTargetNode->arrNode[(int)eChildType]->arrNode[(int)NODE_TYPE::PARENT] = _pTargetNode->arrNode[(int)NODE_TYPE::PARENT];
+		}
+
+		delete _pTargetNode;
+
+		// 데이터 갯수 맞춤 -> 카운트 감소
+		--m_iCount;
 	}
-
-	// 데이터 갯수 맞춤 -> 카운트 감소
-	--m_iCount;
 	
 	return pSuccessor;
 }

@@ -176,9 +176,13 @@ int main()
 	bstint.insert(make_bstpair(75, 0));
 	bstint.insert(make_bstpair(125, 0));
 	bstint.insert(make_bstpair(175, 0));
+	//      100
+	//  50       150
+	//25  75  125  175
+	Iter = bstint.find(150);
+	Iter = bstint.erase(Iter);
 
-	Iter = bstint.find(25);
-
+	Iter = bstint.find(100);
 	Iter = bstint.erase(Iter);
 
 	return 0;
