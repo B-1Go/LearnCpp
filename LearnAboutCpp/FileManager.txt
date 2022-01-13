@@ -27,4 +27,5 @@ https://www.youtube.com/playlist?list=PL4SIC1d_ab-aOxWPucn31NHkQvNPHK1D1
 24. StructandClass.cpp , Cstyle.h, Cstyle.cpp, Cppstyle.h, Cppstyle.cpp : 포인터로 만든 자료형과 함수, 레퍼런스의 등장 및 Class로 만드는 자료형의 차이를 이해하기 위한 연습
 25. main16.cpp : 58강 - 68강
 26. main17.cpp : 68강 - 75강
-27. main18.cpp : 76강 - ??강
+27. main18.cpp : 76강 - 80강
+28. main19.cpp : 81강 - ??강

@@ -162,7 +162,10 @@
     <ClCompile Include="Cstyle.cpp" />
     <ClCompile Include="func.cpp" />
     <ClCompile Include="LinkedList.cpp" />
-    <ClCompile Include="main18.cpp" />
+    <ClCompile Include="main18.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="main19.cpp" />
     <ClCompile Include="mainf.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>

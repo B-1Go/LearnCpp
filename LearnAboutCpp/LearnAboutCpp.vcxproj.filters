@@ -106,5 +106,8 @@
     <ClCompile Include="main18.cpp">
       <Filter>헤더 파일</Filter>
     </ClCompile>
+    <ClCompile Include="main19.cpp">
+      <Filter>헤더 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
