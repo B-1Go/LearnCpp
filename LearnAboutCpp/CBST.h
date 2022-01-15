@@ -229,7 +229,7 @@ inline tBSTNode<T1, T2>* CBST<T1, T2>::GetInOrderSuccessor(tBSTNode<T1, T2>* _pN
 {
 	tBSTNode<T1, T2>* pSuccessor = nullptr;
 
-	// 1. 오른쪽 자식이 있는 경우, 오른쪽 자식으로 가서, 왼쪽 자식이 없을 때 까지 내려감
+	// 1. 오른쪽 자식이 있는 경우, 오른쪽 자식으로 1번 가서, 왼쪽 자식이 없을 때 까지 내려감
 	if (nullptr != _pNode->arrNode[(int)NODE_TYPE::RCHILD])
 	{
 		pSuccessor = _pNode->arrNode[(int)NODE_TYPE::RCHILD];
@@ -276,11 +276,54 @@ inline tBSTNode<T1, T2>* CBST<T1, T2>::GetInOrderSuccessor(tBSTNode<T1, T2>* _pN
 }
 
 template<typename T1, typename T2>
-inline tBSTNode<T1, T2>* CBST<T1, T2>::GetInOrderPredecessor(tBSTNode<T1, T2>* _pNdoe) // 중위 선행자는 정확하게 중위 후속자라 대칭 -> 스스로 구현해보기!
+inline tBSTNode<T1, T2>* CBST<T1, T2>::GetInOrderPredecessor(tBSTNode<T1, T2>* _pNdoe) // 중위 선행자는 정확하게 중위 후속자랑 대칭 -> 스스로 구현해보기!
 {
-	// 
+	tBSTNode<T1, T2>* pSuccessor = nullptr;
 
-	return nullptr;
+	// 1. 왼쪽 자식이 있는 경우, 왼쪽 자식으로 1번 가서, 오른쪽 자식이 없을 때 까지 내려감
+	if (nullptr != _pNode->arrNode[(int)NODE_TYPE::LCHILD])
+	{
+		pSuccessor = _pNode->arrNode[(int)NODE_TYPE::LCHILD];
+
+		while (pSuccessor->arrNode[(int)NODE_TYPE::RCHILD])
+		{
+			pSuccessor = pSuccessor->arrNode[(int)NODE_TYPE::RCHILD];
+
+		}
+
+	}
+
+	// 2. 부모로 부터 오른쪽자식일 때 까지 위로 올가감
+	//    그때 부모가 선행자
+	else
+	{
+		pSuccessor = _pNode;
+
+		while (true)
+		{
+			// 더이상 위쪽으로 올라갈 수 없다. --> 마지막 노드였다.
+			if (pSuccessor->IsRoot())
+			{
+				return nullptr;
+			}
+
+			// 부모로 부터 오른쪽자식인지 체크
+			if (pSuccessor->IsRightChild())
+			{
+				// 그때 부모가 선행자
+				pSuccessor = pSuccessor->arrNode[(int)NODE_TYPE::PARENT];
+				break;
+			}
+			else
+			{
+				pSuccessor = pSuccessor->arrNode[(int)NODE_TYPE::PARENT];
+			}
+
+		}
+
+	}
+
+	return pSuccessor;
 }
 
 template<typename T1, typename T2>

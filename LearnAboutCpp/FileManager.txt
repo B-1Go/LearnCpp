@@ -28,4 +28,6 @@ https://www.youtube.com/playlist?list=PL4SIC1d_ab-aOxWPucn31NHkQvNPHK1D1
 25. main16.cpp : 58강 - 68강
 26. main17.cpp : 68강 - 75강
 27. main18.cpp : 76강 - 80강
-28. main19.cpp : 81강 - ??강
+28. main19.cpp : 81강 - 85강
+-----------------------------------
+2021년 C/C++ 어소트락 강의를 마침.
